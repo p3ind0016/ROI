@@ -1,0 +1,317 @@
+<div class="x_content">
+                    <!-- Smart Wizard -->
+                    <p>This interactive calculator is designed to help determine the relative costs and benefits of decommissioning and actively archiving an array of applications with EMC InfoArchive compared to a present mode of operation or status quo which assumes some applications are kept active to serve as an archive and other applications rely on their backups as an archive.</p>
+                    <p>To begin an analysis, proceed to the inputs section and provide information about your InfoArchive use case. Next, review your results on the report screens. You can return to the inputs or model administration tabs at any time and modify any or all of your entries. </p>
+                    <!-- Tabs -->
+                    
+                    <div id="wizard" class="form_wizard wizard_horizontal">
+                      <ul class="wizard_steps">
+                        <li>
+                          <a href="#step-1">
+                            <span class="step_no">1</span>
+                            <span class="step_descr">
+                                              Step 1<br />
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-2">
+                            <span class="step_no">2</span>
+                            <span class="step_descr">
+                                              Step 2<br />
+                                              <small></small>
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-3">
+                            <span class="step_no">3</span>
+                            <span class="step_descr">
+                                              Step 3<br />
+                                              <small></small>
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-4">
+                            <span class="step_no">4</span>
+                            <span class="step_descr">
+                                              Step 4<br />
+                                              <small></small>
+                                          </span>
+                          </a>
+                        </li>
+                      </ul>
+                      <div id="step-1">
+                        <h2 class="StepTitle">Application decommissioning use case</h2>
+                        <form class="form-horizontal form-label-left">
+                            
+                            <p>Please tell us a bit about the applications you are looking to decommission with InfoArchive. Input cells with * are required</p>
+
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-1">How many applications are candidates for decommissioning?
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-1" ng-model="input11" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-2">What is the average age of these applications?  (in years)
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-2" ng-model="input12" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="input1-3" class="control-label col-md-9 col-sm-9 col-xs-12">Approximately how much does your organization pay annually in application support and maintenance  for these applications in the aggregate</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-3" ng-model="input13" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-4">How many total mainframe systems will be retired as a result of decommissioning these applications?</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-4" ng-model="input14" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-5">How many total physical servers will be retired as a result of decommissioning these applications?</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-5" ng-model="input15" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-6">On average, how many times is this application data replicated to other storage systems/locations? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-6" ng-model="input16" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-7">How frequently is this data backed up fully? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-7" ng-model="input17" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input1-8">How long are backup tapes for these applications retained? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input1-8" ng-model="input18" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+
+                        </form>
+
+                      </div>
+                      <div id="step-2">
+                        <h2 class="StepTitle">Application decommissioning use case</h2>
+                        <form class="form-horizontal form-label-left">
+                            
+                            <p>Please tell us a bit about the applications you are looking to archive with InfoArchive. Input cells with * are required</p>
+
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-1">How many applications are you looking to archive? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-1" ng-model="input21" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-2">What is the average age of these applications?  (in years)
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-2" ng-model="input22" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-3" >Approximately how old must data be before it is considered 'static' or unlikely to change moving forward (i.e., a candidate for archiving)?</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input id="input2-3" ng-model="input23" class="form-control col-md-7 col-xs-12" type="text">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-4">Among all these applications, approximately how many physical servers are added to the environment annually to support application growth?</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-4" ng-model="input24" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-5">By approximately what percent do you believe you could reduce server growth through the archive of current and future 'static' data? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-5" ng-model="input25" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-6">What is the approximate per-server application licensing cost for these applications? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-6" ng-model="input26" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-7">What is the total capacity of application data directly associated with these applications (i.e. excluding backup and replication)? (in TBs) 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-7" ng-model="input27" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-8">Is this predominantly file data? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-8" ng-model="input28" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-9">Approximately what percent of data can be deleted (i.e., not placed into the archive) upon the initial load? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-9" ng-model="input29" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-10">At approximately what rate is this data growing on an annual basis? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-10" ng-model="input210" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-11">What is the class of storage on which this data typically stored? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-11" ng-model="input211" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-12">What is the procurement cost of the production storage on which this data typically stored? ($/TB)  
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-12" ng-model="input212" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-13">How frequently is this data backed up fully? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-13" ng-model="input213" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-14">If archived, how old must this data be before it is eligible for disposition? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-14" ng-model="input214" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input2-15">If archived, what is the minimum amount of time this data must reside in the archive before it is eligible for disposition (regardless of data age)? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input2-15" ng-model="input215" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div id="step-3">
+                        <h2 class="StepTitle">Application active archiving use case</h2>
+                        <form class="form-horizontal form-label-left">
+                            
+                            <p>Please provide us with a bit of additional information related to your business.</p>
+                            
+                            <p>Backup windows, retrieval, and restoration requirements </p>
+
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-1">This model assumes disk backup appliances are in place today, how many appliances would you like to model as deployed? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-1" ng-model="input31" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-2">What is the backup window you must stay within for the applications discussed in this model? (in hours)
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-2" ng-model="input32" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="input3-3" class="control-label col-md-9 col-sm-9 col-xs-12">Approximately how many retrieval requests do you receive from customers and employees annually? </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input id="input3-3" ng-model="input33" class="form-control col-md-7 col-xs-12" type="text">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-4">Approximately how many retrieval requests do you receive from compliance and regulatory agencies annually? </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-4" ng-model="input34" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-5">Approximately how many retrieval requests do you receive from legal/e-discovery sources annually? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-5" ng-model="input35" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <p>Additional Business Costs </p>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-6">What is the average annual salary for a typical IT administrator?  
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-6" ng-model="input36" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-7">For every dollar spent on InfoArchive (or other new enterprise) software, how many dollars do you expect to spend on professional services? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-7" ng-model="input37" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-9 col-sm-9 col-xs-12" for="input3-8">For how many years do you anticipate to incur services costs? 
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                              <input type="text" id="input3-8" ng-model="input38" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div id="step-4">
+                        <h1 class="StepTitle">Summary of Inputs</h1>
+                        <h2 class="StepTitle">Legacy Application Decommissioning Use Case</h2>
+                          <p>This analysis includes a decommission-able application environment consisting of {{input11}} legacy applications which are, on average, {{input12}} years old, and which in total cost the organization {{input13}} annually in support and maintenance charges</p>
+                          <p>The infrastructure footprint to run these legacy applications includes {{input14}} mainframes and {{input15}} physical servers</p>
+                          <p>In total, there is assumed to be {{input16}} TBs associated with these applications residing on {{input17}} storage which is replicated. Weekly full backups are made of this data and are retained indefinitely</p>
+                        <h2 class="StepTitle">Active archive of Live Apps Use Case</h2>
+                          <p>This analysis includes an actively archived application environment consisting of {{input21}} live applications which are, on average, {{input22}} years old. The data from these applications is generally able to be archived after {{input23}} months.</p>
+                          <p>The server footprint to support these applications is growing at a rate of {{input24}} servers annually. It is estimated that through active archiving server growth can be reduced by {{input25}} and that each server added carries with it a {{input26}} application licensing cost.</p>
+                          <p>In total, there is assumed to be {{input27}} TBs associated with these applications residing on high-end storage which is replicated. Additionally, this data is assumed to be growing at a {{input210}} rate annually. Weekly full backups are made of this data and are retained indefinitely.</p>
+                        <h2 class="StepTitle">Additional Organization-wide Assumptions</h2>
+                          <p>This model assumes a disk-to-tape backup architecture leveraging {{input31}} disk backup appliances which are appropriately sized to meet a {{input32}} hour backup window (based on publicly available Data Domain specs).</p>
+                          <p>Aggregating all of the applications above, a total of {{input33+input34+input35}} retrieval requests are assumed to take place each year. Requests include those made by employees and customers, regulatory agencies, and those which are a part of legal e-discovery initiatives</p>
+                          <p>Finally that average annual salary for IT employees is estimated as {{input36}}</p>
+                        <h2 class="StepTitle">By analyzing these use cases and key environmental characteristics, this model provides estimates for the financial impact your organization could expect by investing in InfoArchive compared to the status quo. This analysis was compiled by Your name here. To discuss it further please contact me at Your email here or Your phone here.</h2>
+                        <h1 class="StepTitle">Summary of Results</h1>
+                        <h2 class="StepTitle">TCO and Incremental Benefit of InfoArchive vs. the Status Quo, Five-year Time Horizon</h2>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Line Graph</h2>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+
+                            <div id="echart_line" style="height:350px;"></div>
+
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+
+                    </div>
+</div>
