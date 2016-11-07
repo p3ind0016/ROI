@@ -1,11 +1,11 @@
 {
-  "name": "gentelella",
+  "name": "ROI",
   "homepage": "https://colorlib.com/polygon/gentelella/index.html",
   "authors": [
     "Aigars Silkalns",
     "Christian Esperar"
   ],
-  "description": "Gentelella Admin is a free to use Bootstrap admin template",
+  "description": "ROI",
   "keywords": [
     "css",
     "js",
@@ -16,11 +16,6 @@
     "theme",
     "backend",
     "responsive"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "documentation"
   ],
   "devDependencies": {
     "jquery": "^2.2.3",
@@ -82,5 +77,9 @@
   "resolutions": {
     "jquery": "^2.2.3",
     "fastclick": "^1.0.6"
+  },
+  "dependencies": {
+    "angularfire": "^2.1.0",
+    "firebase": "^3.5.3"
   }
 }

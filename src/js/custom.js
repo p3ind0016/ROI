@@ -100,6 +100,7 @@ $(document).ready(function() {
 // Panel toolbox
 $(document).ready(function() {
     $('.collapse-link').on('click', function() {
+        console.log("getting called");
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');

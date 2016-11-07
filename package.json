@@ -1,7 +1,7 @@
 {
-  "name": "gentelella",
-  "version": "1.3.0",
-  "description": "Gentellela Admin is a free to use Bootstrap admin template",
+  "name": "ROI",
+  "version": "0.1",
+  "description": "ROI",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,15 +20,7 @@
     "backend",
     "responsive"
   ],
-  "author": "Aigars Silkalns",
-  "contributors": [
-    "Christian Esperar"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/puikinsh/gentelella/issues"
-  },
-  "homepage": "https://github.com/puikinsh/gentelella#readme",
+  "author": "Sai Deepak Vudya",
   "devDependencies": {
     "browser-sync": "^2.12.10",
     "gulp": "^3.9.1",

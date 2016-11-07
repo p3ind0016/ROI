@@ -135,16 +135,46 @@ $(document).ready(function() {
 // Panel toolbox
 $(document).ready(function() {
     $('.collapse-link').on('click', function() {
+        console.log("coming here");
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
+        console.log($BOX_PANEL);
         
         // fix for some div with hardcoded fix class
         if ($BOX_PANEL.attr('style')) {
+            console.log("we are in if");
             $BOX_CONTENT.slideToggle(200, function(){
                 $BOX_PANEL.removeAttr('style');
             });
         } else {
+            console.log("we are in else");
+            console.log($BOX_PANEL);
+            console.log($BOX_CONTENT);
+            $BOX_CONTENT.slideToggle(200); 
+            $BOX_PANEL.css('height', 'auto');  
+        }
+
+        $ICON.toggleClass('fa-chevron-up fa-chevron-down');
+    });
+    
+    $('.collapse-question').on('click', function() {
+        console.log("coming into Collapse question");
+        var $BOX_PANEL = $(this).closest('.q_panel'),
+            $ICON = $(this).find('i'),
+            $BOX_CONTENT = $BOX_PANEL.find('.q_content');
+        console.log($BOX_PANEL);
+        
+        // fix for some div with hardcoded fix class
+        if ($BOX_PANEL.attr('style')) {
+            console.log("we are in q if");
+            $BOX_CONTENT.slideToggle(200, function(){
+                $BOX_PANEL.removeAttr('style');
+            });
+        } else {
+            console.log("we are in q else");
+            console.log($BOX_PANEL);
+            console.log($BOX_CONTENT);
             $BOX_CONTENT.slideToggle(200); 
             $BOX_PANEL.css('height', 'auto');  
         }

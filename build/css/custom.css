@@ -208,7 +208,7 @@ body .container.body .right_col {
   margin-left: 230px; }
 
 .nav_title {
-  width: 230px;
+  width: 50%;
   float: left;
   background: #2A3F54;
   border-radius: 0;
@@ -577,7 +577,7 @@ a:hover, a:focus {
   line-height: 59px;
   display: block;
   height: 55px;
-  margin: 0;
+  margin: 10px;
   padding-left: 10px; }
 
 .site_title:hover, .site_title:focus {
@@ -1912,6 +1912,10 @@ span.section {
 
 .form-horizontal .control-label {
   padding-top: 8px; }
+
+.align-left {
+    text-align: left !important;
+}
 
 .form-control:focus {
   border-color: #CCD0D7;
