@@ -1,9 +1,8 @@
 {
   "name": "ROI",
-  "homepage": "https://colorlib.com/polygon/gentelella/index.html",
+  "homepage": "https://returnofinvestment-4eebb.firebaseapp.com",
   "authors": [
-    "Aigars Silkalns",
-    "Christian Esperar"
+    "Sai Deepak Vudya"
   ],
   "description": "ROI",
   "keywords": [
@@ -80,6 +79,8 @@
   },
   "dependencies": {
     "angularfire": "^2.1.0",
-    "firebase": "^3.5.3"
+    "firebase": "^3.5.3",
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
   }
 }
