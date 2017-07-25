@@ -3,6 +3,11 @@
 <head>
 <script type='text/javascript'
   src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -11,13 +16,30 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="js/jquery.js"></script>
+   <link rel="stylesheet" href="css/style.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  
+   <script src="js/jquery.js"></script>
   <script src="js/jstree.min.js"></script>
+   <script src="js/multiplepages.js"></script>
 
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
-
+   
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/demos.js"></script>
@@ -86,13 +108,62 @@
             }
         });
     </script>
-  <style>.bar {
+      <style>
+
+.glyphicon { cursor: pointer; }
+
+input,
+select { width: 100%; }
+
+.bar {
   background-color: lightblue;
   height: 100%;
   text-align:center;
 } 
-  </style>
+.test input {
+    border: 0;
+}
+</style>
   
+   <script>
+function myFunction1() {
+    var x = document.getElementById('myDiv1');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } 
+    else {
+        x.style.display = 'none';
+    }
+}
+function myFunction2() {
+    var x = document.getElementById('myDiv2');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } 
+    else {
+        x.style.display = 'none';
+    }
+}
+function myFunction3() {
+    var x = document.getElementById('myDiv3');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } 
+    else {
+        x.style.display = 'none';
+    }
+}
+function myFunction4() {
+    var x = document.getElementById('myDiv4');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } 
+    else {
+        x.style.display = 'none';
+    }
+}
+</script>
+    
 <script type="text/javascript">
     function EnableDisableTextBox(chkROD) {
         var txtROD = document.getElementById("txtROD");
@@ -139,30 +210,6 @@ $(function() {
         adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
     }
 </script>
-<script>
-function update()
-{
-var anl_org=document.loginForm.anl_org.value-0; 
-var mf_serv=document.loginForm.mf_serv.value-0;
-var app_serv=document.loginForm.app_serv.value-0;
-var web_serv=document.loginForm.web_serv.value-0;
-var ws_serv=document.loginForm.ws_serv.value-0;
-var vtl_serv=document.loginForm.vtl_serv.value-0;
-var db_serv=document.loginForm.db_serv.value-0;
-var anl_lic_cst=document.loginForm.anl_lic_cst.value-0;
-var db_lic=document.loginForm.db_lic.value-0;
-var op_sys_lic=document.loginForm.op_sys_lic.value-0;
-var swft_lic=document.loginForm.swft_lic.value-0;
-var oth_lic=document.loginForm.oth_lic.value-0;
-var anl_sprt_cst=document.loginForm.anl_sprt_cst.value-0;
-var yrly_upgrd_cst=document.loginForm.yrly_upgrd_cst.value-0;
-var yrly_res_cst=document.loginForm.yrly_res_cst.value-0;
-document.loginForm.ttl.value=anl_org+mf_serv+app_serv+web_serv+ws_serv+vtl_serv+db_serv+anl_lic_cst+db_lic+op_sys_lic+swft_lic+oth_lic+anl_sprt_cst+yrly_upgrd_cst+yrly_res_cst; 
-
-}
-
-
-</script>
 
 <script type="text/javascript">
     function ShowHideDiv() {
@@ -173,32 +220,53 @@ document.loginForm.ttl.value=anl_org+mf_serv+app_serv+web_serv+ws_serv+vtl_serv+
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
 </script>
-
-
-  </head><!--from  w  w w  . ja  va 2 s.co  m-->
-  <body>
-  <%@page language="java"%>
+  
+ 
+    
+</head>
+<body class='default'>
+    <%@page language="java"%>
 <%@page import="java.sql.*"%>
-
+<%@ page import="java.text.NumberFormat" %>
 
 <%
+double ans=0.0;
 try {
+	int  total;
 	String det=(String)session.getAttribute("theName");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query3 = "select * from projinfo where id = "+det;
+
+String name=request.getParameter("name");
+
+Statement st1 = conn.createStatement();
+Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
+String query1= "SELECT * from app_prior where prj_name='"+name+"'";
+ResultSet rs1 = st1.executeQuery(query1);
+String query2= "select count(prj_name) As total from app_prior where prj_name='"+name+"'";
+ResultSet rs2 = st2.executeQuery(query2);
 {
 %>
-<form class="form-signin"name="loginForm" method="post" action="comp">
+
+<%if(rs2.next())
+{
+total=rs2.getInt("total");
+
+%>
+
+ 
+<form class="form-signin" name="loginForm" method="post">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
+            
+            <%if (rs3.next()) {%>
                 
-                    <% if(rs3.next()){ %>
+                    
                     <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
-                    <%} %>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -212,21 +280,19 @@ ResultSet rs3 = st3.executeQuery(query3);
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="#">Help</a>
                         </li>
                     </ul>
                     
                 </div>
+               
             </div>
         </nav>
         </div>
        
             <div class="row">
             <br>
-               
-               
-               
-               <div class="col-md-3 sidebar">
+                <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
         <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
                     <ul class="nav nav-sidebar">
@@ -239,19 +305,19 @@ ResultSet rs3 = st3.executeQuery(query3);
                        <li item-expanded='true'>Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
-                        <li><a href="application1.jsp">Application Details</a></li>
+                        <li item-selected='true'><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true' item-selected='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>
                                 <li>Archival Cost Estimate</li>
-                               
+                                
                             </ul>
                         </li>
-                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li item-selected='true'><a href="demo.jsp">ROI Calculation</a></li>
+                        <li item-selected='true'><a href="applnprior.jsp">Application-Prioritized</a></li>
+                       <li> <a href="demo.jsp">ROI Calculation</a></li>
                         <li>Estimates</li>
 
                     </ul>
@@ -290,19 +356,9 @@ ResultSet rs3 = st3.executeQuery(query3);
          </div>
    </div>
                 </div>
+
                
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-                  <script>
+   <script>
   $(function () {
     // 6 create an instance when the DOM is ready
     $('#jstree').jstree();
@@ -318,12 +374,16 @@ ResultSet rs3 = st3.executeQuery(query3);
     });
   });
   </script>
-  <br/><br/><br/>
-                                
-                 <div class="col-md-8">
-                 
-                 
-                             
+
+  </script>
+  
+
+                    <br/><br/><br/>
+                    
+                    
+                <div class="col-md-9">
+          
+            
 
 <div class="row">
 
@@ -355,119 +415,131 @@ ResultSet rs3 = st3.executeQuery(query3);
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-         
+              
+                    <br/><br/><br/>
                  
-                     <br/><br/><br/> 
-                    <div class="panel-group" id="panels1"> 
-                                                <div class="panel panel-default">
-        <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Legacy Application Maintenance Inputs   </a> </h4> 
-                            </div>  
-                                                       
-                            <div id="collapse1" class="panel-collapse collapse"> 
-                                <div class="panel-body text-left">
                                 
-
-                                    
-                                    
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Annual Organization pay on Server maintenances</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="anl_org" onChange="update()">
-                                        </div>
-                                       
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Mainframe Servers</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="mf_serv" onChange="update()">
-                                        </div>
-                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Application Servers</label>
-                                            <input type="text" class="form-control" id="formInput526"  name=app_serv onChange="update()">
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput316">Web Servers</label>
-                                              <input type="text" class="form-control"  name="web_serv"  onChange="update()"> 
-                                         </div>
-                                        <div class="form-group">
-                                       
-                                            <label class="control-label" for="formInput526">Windows Servers</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="ws_serv" onChange="update()">
-                                      
-                                        </div>
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Virtual Servers</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="vtl_serv" onChange="update()">
-                                        </div>
-                                                <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Database Servers</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="db_serv" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Annual License/Contractual Cost for each application</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="anl_lic_cst"  onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Database License</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="db_lic" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Operating Systems License</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="op_sys_lic" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Software Product License</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="swft_lic" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Other License</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="oth_lic" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Annual Operational Support Cost</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="anl_sprt_cst" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Yearly Product Upgrade Cost</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="yrly_upgrd_cst" onChange="update()">
-                                        </div>
-                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Yearly resource cost</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="yrly_res_cst"  onChange="update()">
-                                        </div>   
-                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Total</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="ttl">
-                                        </div>                         
-                               
-                               
-                                </div>                                 
-                            </div>                             
-                        </div> 
-                                                                             <br>               
-                                   <button type="submit" class="btn btn-primary" >Save</button>
-                     <a href="project.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
-                                    
-                                      
-                                </div>                                 
-                            </div>                             
-                        </div>                       
-                  
-                        
-                    </div> 
+                                
+  <div class="table-responsive" id="table-scroll"> 
+    
+    <!-- Initialization 
+                * js-dynamitable => dynamitable trigger (table)
+                -->
+    <table class="js-dynamitable     table table-bordered" id="myTable">
+      
+      <!-- table heading -->
+      <thead>
         
-                    
-                  
-       </div>
-                
-            </div>
-           
-           
+        <!-- Sortering
+                        * js-sorter-asc => ascending sorter trigger
+                        * js-sorter-desc => desending sorter trigger
+                        -->
+        <tr>
+          <th>Application Name</th>
+          <th>Complexity</th>
+          <th>Estimated Size of xDB </th>
+          <th>Estimated Service Cost </th>
+          <th>Priorities</th>
+         
+    </tr>
+        
+        <!-- Filtering
+                        * js-filter => filter trigger (input, select)
+                        -->
+        
+      </thead>
+      
+      <!-- table body -->
+      <tbody>   
+        
+      <%int i=0	; %>
+          <%
+        
+while(rs1.next()){
+
+%>
+
+        <tr>
+        
+          <td class="edit_row" style="cursor:pointer" id="11"><%=rs1.getString("proj_name") %></td>
+          <td class="row_s" style="cursor:pointer" id="22"><%=rs1.getString("complexity") %></td>
+          <td class="row_t" style="cursor:pointer" id="33"><%=rs1.getString("est_db_size") %></td>
+          <td class="row_d" style="cursor:pointer" id="44"><%=rs1.getString("est_cst") %></td>
+          <td class="row_d" id="55">
+          <span class="test"><input type="text" name="prior" id="5" value="Priority <%=rs2.getInt("total")-i %>" disabled></span>
+         <input type="button" value="Submit" 
+  onclick="ggg(5)" />
+        </td>
+       
+         
+         
+        </tr>
         <%
+i++;        
+} 
+        
+	
+        %>
+        
+    </tbody>
+    </table>
+    
+    <script>
+  
+
+    function ggg(id)
+    {
+    	for(i=0;i<4;i++){
+    	alert(id);
+    	
+    	
+    	}
+    	document.getElementById("5").disabled=false;	
+    }
+
+
+    </script>
+      <script>
+// JavaScript script from: http://coursesweb.net/javascript/
+
+// gets all the .edit_row cells, registers click to each one
+var edit_row = document.querySelectorAll('#myTable .edit_row');
+for(var i=0; i<edit_row.length; i++) {
+  edit_row[i].addEventListener('click', function(e){
+    // get parent row, add data from its cells in form fields
+    var tr_parent = this.parentNode;
+    document.getElementById('proj_name').value = tr_parent.querySelector('.edit_row').innerHTML;
+    document.getElementById('complexity').value = tr_parent.querySelector('.row_s').innerHTML;
+    document.getElementById('est_db_size').value = tr_parent.querySelector('.row_t').innerHTML;
+    document.getElementById('est_cst').value = tr_parent.querySelector('.row_d').innerHTML;
+    }, false);
 }
-}
+
+</script>
+     
+  </div>
+  <br />
+                                
+                        
+                            <br/>
+                      
+         
+                                                                                            
+                                   
+                                   
+<button type="button" class="btn btn-primary" >Submit</button>     
+     
+                    <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
+                                      <% } 
+                                      }
+%> 
+                           
+                                </div>                                 
+                            </div>
+                             <%
+
+}}
 catch(Exception e){}
 %>
- </form>
 </body>
 </html>
-
-

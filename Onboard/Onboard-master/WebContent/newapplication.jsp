@@ -14,6 +14,83 @@
   <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <script src="js/jquery.js"></script>
+  <script src="js/jstree.min.js"></script>
+<link rel="stylesheet" href="css/style.min.css">
+    <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
+    <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
+        can populate it from 'UL' or by using its 'source' property." />
+   
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/demos.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Create jqxTree
+            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').css('visibility', 'visible');
+            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
+            var clickedItem = null;
+            
+            var attachContextMenu = function () {
+                // open the context menu when the user presses the mouse right button.
+                $("#jqxTree li").on('mousedown', function (event) {
+                    var target = $(event.target).parents('li:first')[0];
+                    var rightClick = isRightClick(event);
+                    if (rightClick && target != null) {
+                        $("#jqxTree").jqxTree('selectItem', target);
+                        var scrollTop = $(window).scrollTop();
+                        var scrollLeft = $(window).scrollLeft();
+                        contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
+                        return false;
+                    }
+                });
+            }
+            attachContextMenu();
+            $("#jqxMenu").on('itemclick', function (event) {
+                var item = $.trim($(event.args).text());
+                switch (item) {
+                    case "Add Item":
+                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                        if (selectedItem != null) {
+                            $('#jqxTree').jqxTree('addTo', { label: 'Item' }, selectedItem.element);
+                            attachContextMenu();
+                        }
+                        break;
+                    case "Remove Item":
+                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
+                        if (selectedItem != null) {
+                            $('#jqxTree').jqxTree('removeItem', selectedItem.element);
+                            attachContextMenu();
+                        }
+                        break;
+                }
+            });
+            // disable the default browser's context menu.
+            $(document).on('contextmenu', function (e) {
+                if ($(e.target).parents('.jqx-tree').length > 0) {
+                    return false;
+                }
+                return true;
+            });
+            function isRightClick(event) {
+                var rightclick;
+                if (!event) var event = window.event;
+                if (event.which) rightclick = (event.which == 3);
+                else if (event.button) rightclick = (event.button == 2);
+                return rightclick;
+            }
+        });
+    </script>
+
+
 <script>
     $(document).ready(function(){
       var date_input=$('input[name="Startdate"]'); //our date input has the name "date"
@@ -154,14 +231,29 @@ $(function() {
 
 
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
-  <body style='margin:30px'>
+  <body>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
-
 <%
-String prid= request.getParameter("id");
-int no=Integer.parseInt(prid);
-System.out.println(prid);
+
+String det=(String)session.getAttribute("theName");
+Connection con = null;
+String url = "jdbc:mysql://localhost:3306/";
+String db = "strutsdb";
+String driver = "com.mysql.jdbc.Driver";
+String userName ="root";
+String password="password123";
+Class.forName(driver).newInstance();
+con = DriverManager.getConnection(url+db,userName,password);
+String query3 = "select * from projinfo where id = "+det;
+Statement st3 = con.createStatement();
+ResultSet rs3 = st3.executeQuery(query3);
+
+
+
+
+
+
 %>
 
 <form class="form-signin"name="loginForm" method="post" action="Appin">
@@ -169,8 +261,9 @@ System.out.println(prid);
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
+                 <%if (rs3.next()) {%>
                     
-                    <a class="navbar-brand" href="#">Onboard</a>
+                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -194,27 +287,89 @@ System.out.println(prid);
        
             <div class="row">
             <br>
-                <div class="col-sm-2 col-md-2 sidebar">
+                <div class="col-md-3 sidebar">
+                    <div id='jqxWidget'>
+        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
                     <ul class="nav nav-sidebar">
-                        <li class="active">
-                            <a href="project.jsp">Home </a>
-                        </li>
-                        <li >
-                            <a href="display.jsp">Application Information</a>
-                        </li>
-                        <li class="active"><a href="business.jsp"><bold>Business</bold></a></li>
-                            
                         
-                        <li>
-                            <a href="sample.jsp">Technical</a>
+
+            <ul>
+                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li item-expanded='true'>App Emphasize Module
+                    <ul>
+                       <li item-expanded='true'>Project Details
+                    <ul>
+                        <li><a href="editproject.jsp">Project Information</a></li>
+                        <li><a href="application1.jsp">Application Details</a></li>
+                        </ul>
                         </li>
-                        <li>
-                            <a href="sample.jsp">Requirements</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
+                         <ul>
+                                <li id="xxx">Parameters</li>
+                                <li id="xxz">Archival Complexity Calculation</li>
+                                <li id="xxy">Archival Cost Estimate</li>
+                                
+                            </ul>
                         </li>
-                       
+                        <li><a href="applnprior.jsp">Application-Prioritized</li>
+                        
+                       <li> <a href="demo.jsp">ROI Calculation</a></li>
+                        <li>Estimates</li>
+
                     </ul>
-                    </div>
+                </li>
+                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+                <ul>
+                <li item-expanded='true'><a href="business.jsp">Business</a>
+                <ul>
+                <li>Application Information</li>
+                <li>Legacy Retention Information</li>
+                <li>Archive Data Management</li>
+                <li>System Requirements</li>
                 
+                </ul></li>
+                <li item-expanded='true'><a href="component.jsp">Technical</a>
+                <ul>
+                <li>Application Data Information</li>
+                <li>Infrastructure & Environment Inforamation</li>
+                <li>Technical Information</li>
+                </ul>
+                </li>
+                
+                 <li item-expanded='true'><a href="requirements.jsp">Archival Requirements</a>
+                 <ul>
+                 <li>Screen/Report Requirements</li>
+                 <li>Archive Requirements</li>
+                 </ul>
+                 </li>
+                </ul>
+                </li>
+                
+               
+                          </ul>
+    
+     </ul>
+         </div>
+   </div>
+                </div>
+
+   <script>
+  $(function () {
+    // 6 create an instance when the DOM is ready
+    $('#jstree').jstree();
+    // 7 bind to events triggered on the tree
+    $('#jstree').on("changed.jstree", function (e, data) {
+      console.log(data.selected);
+    });
+    // 8 interact with the tree - either way is OK
+    $('button').on('click', function () {
+      $('#jstree').jstree(true).select_node('child_node_1');
+      $('#jstree').jstree('select_node', 'child_node_1');
+      $.jstree.reference('#jstree').select_node('child_node_1');
+    });
+  });
+  </script>
+        
                 <div class="col-md-9">
                     <h1 class="page-header">Intake</h1>
                     <h3>Application Details</h3>
@@ -226,15 +381,14 @@ System.out.println(prid);
                             <div id="collapse1" class="panel-collapse collapse"> 
                                 <div class="panel-body text-left">
                                
-                                    
-								
-                                   
                                          <div class="form-group"> 
                                             <label class="control-label" for="formInput198">
-                                               Project ID&nbsp;
+                                               Project Name&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="pid" value="<%= prid%>" disabled >
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs3.getString("projectname") %>">
                                         </div>
+								
+                                   
                                         
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput198">
@@ -302,9 +456,11 @@ System.out.println(prid);
                                                 
                     </div>
                     
+                    
         <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
                     <button type="button" class="btn btn-default" >Back</button> 
        </div>
+       <% } %>
               </form>    
             </div>
             

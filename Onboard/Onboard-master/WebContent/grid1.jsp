@@ -23,7 +23,6 @@
   </style>
   <script src="js/multiplepages.js"></script>
   <script language="javascript"></script>
-
  
 </head>
 <body>
@@ -31,25 +30,21 @@
 <%@page import="java.sql.*"%>
 
 <%
+
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
 String db = "strutsdb";
 String driver = "com.mysql.jdbc.Driver";
 String userName ="root";
 String password="password123";
-
-String name = request.getParameter("id");
-session.setAttribute("theName", name);
-
-int sumcount=0;
-Statement st;
-try{
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection(url+db,userName,password);
-Statement st1;
+Statement st;
+String name=request.getParameter("nm");
+System.out.println(name);
 String query1 = "select * from projinfo where id = "+name;
-st1 = con.createStatement();
-ResultSet rs = st1.executeQuery(query1);
+st = con.createStatement();
+ResultSet rs = st.executeQuery(query1);
 
 
 if(rs.next())
@@ -59,9 +54,8 @@ if(rs.next())
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
-    
                  
-                    <a class="navbar-brand">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand"> Onboard-<%=rs.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -82,7 +76,7 @@ if(rs.next())
                 </div>
             </div>
         </nav>
-     
+        <%} %>
         </div>
 
   <br><br>
@@ -112,15 +106,15 @@ if(rs.next())
         </div>
         <div class="col-sm-2">
           <div class="well">
-          <a href="editproject.jsp">
+          <a href="tree.jsp">
          <center>
-           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
           </a>
         </div>
         <div class="col-sm-2">
           <div class="well">
-          <a href="firstinsert.jsp">
+          <a href="business.jsp">
            <center>
            <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -186,18 +180,5 @@ if(rs.next())
   </ul>
 </nav>
 </center>
-
-
-					<%
-					
-}
-%>
-
-<%
-}
-catch(Exception e){
-e.printStackTrace();
-}
-%>
 </body>
 </html>

@@ -33,6 +33,9 @@
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script src="js/multiplepages.js"></script>
+
+
 <script>
     $(document).ready(function(){
       var date_input=$('input[name="Startdate"]'); //our date input has the name "date"
@@ -114,15 +117,19 @@ $(function() {
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
 </script>
+<script>
+function edit(id)
+{
+	var f=document.form;
+	f.method="post";
+	f.action="grid.jsp?id="+id;
+	f.submit();
+	}
 
-<script language="javascript">
-function editRecord(id){
-    var f=document.form;
-    f.method="post";
-    f.action='grid.jsp?id='+id;
-    f.submit();
-}
+
+
 </script>
+
   
 	</head>
 	<!--from  w  w w  . ja  va 2 s.co  m-->
@@ -138,11 +145,12 @@ function editRecord(id){
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="#">Onboard</a>
+                    <a class="navbar-brand" href="#">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
+                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
                             <a href="#">Settings</a>
@@ -199,6 +207,7 @@ String query = "select * from projinfo";
 st = con.createStatement();
 ResultSet rs = st.executeQuery(query);
 %>
+
 	<ul>
 <%
 while(rs.next()){
@@ -206,8 +215,7 @@ while(rs.next()){
 				
 						<li>
 							
-							<% System.out.println(rs.getString(1));
-							 %>
+							
 							
 							<h3 class="cbp-vm-title left-col primary" name="name"><%=rs.getString(1)%></h3>
 							<center><div class="progress center-col cbp-vm-detail">
@@ -222,14 +230,15 @@ while(rs.next()){
 </center>
 			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
 		
-							
-							<button type="button" class="btn btn-primary" name="btn" onClick="editRecord(<%=rs.getString(10)%>);">
+						
+							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%=rs.getString(10)%>);">
  View/Update
 </button>
 						</li>
 												
 				
 					<%
+					
 }
 %>
 </ul>

@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type='text/javascript'
-  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,7 +13,6 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="css/style.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,8 +30,7 @@
   
    <script src="js/jquery.js"></script>
   <script src="js/jstree.min.js"></script>
-   <script src="js/multiplepages.js"></script>
-
+<link rel="stylesheet" href="css/style.min.css">
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
@@ -53,7 +48,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '400px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -108,9 +103,37 @@
             }
         });
     </script>
+    <style>
+.bs-wizard {margin-top: 40px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+</style>
+
+    
+   
       <style>
 
-.glyphicon { cursor: pointer; }
+
 
 input,
 select { width: 100%; }
@@ -126,6 +149,12 @@ select { width: 100%; }
   height: 100%;
   text-align:center;
 } 
+.selec{color:red;}
+
+.disble{
+color:black;
+cursor:not-allowed;
+}
 
 </style>
   
@@ -187,58 +216,6 @@ function myFunction4() {
   }
   </script>
   
-<script>
-
-function againupdate(){
-	var a,b,c,d,e,z;
-if(document.loginForm.complexity.value=="Low")
-{
-document.loginForm.est_archive.value =700;
-document.loginForm.est_scrn.value ="<=5";
-z=1;
-}
-if(document.loginForm.complexity.value=="Low to Medium")
-{
-document.loginForm.est_archive.value =1000;
-document.loginForm.est_scrn.value ="<=10";
-z=2;
-}
-if(document.loginForm.complexity.value=="Medium")
-{
-document.loginForm.est_archive.value =1400;
-document.loginForm.est_scrn.value ="<=20";
-z=3;
-}
-if(document.loginForm.complexity.value=="Medium to High")
-{
-document.loginForm.est_archive.value =1800;
-document.loginForm.est_scrn.value ="<=25";
-z=4;
-}
-if(document.loginForm.complexity.value=="High")
-{
-document.loginForm.est_archive.value =2500;
-document.loginForm.est_scrn.value ="<=30";
-z=5;
-}
-document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
-document.loginForm.est_hrs.value =(document.loginForm.no_of_app.value*document.loginForm.est_archive.value).toFixed(2);
-a=(100*document.loginForm.est_hrs.value);
-document.loginForm.est_cst.value="$"+a.toFixed(2);
-b=document.loginForm.est_db_size.value*document.loginForm.IA_lic_cst.value;
-document.loginForm.ttl_IA_cst.value ="$"+b.toFixed(2);
-c=10000*document.loginForm.est_db_size.value;
-document.loginForm.ttl_infra_cst.value="$"+c.toFixed(2);
-d=5*b*document.loginForm.IA_maint_cst.value;
-document.loginForm.ttl_IA_prdct_cst.value ="$"+d.toFixed(2);
-e=(a*5)+(b*5)+(c*5)+d;
-document.loginForm.ttl.value="$"+e.toFixed(2);
-}
-</script>  
-  
-  
-  
-
   
 <script type="text/javascript">
     function EnableDisableTextBox(chkROD) {
@@ -279,6 +256,7 @@ $(function() {
 
 
 </script>
+
 <script type="text/javascript">
     function ShowHideDiv() {
         var adMigrated = document.getElementById("adMigrated");
@@ -306,18 +284,16 @@ $(function() {
 <%@ page import="java.text.NumberFormat" %>
 
 <%
-String det=(String)session.getAttribute("theName");
 double ans=0.0;
 try {
-	
+	String det=(String)session.getAttribute("theName");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
-
-String query3 = "select * from projinfo where id = "+det;
-Statement st3 = conn.createStatement();
-ResultSet rs3 = st3.executeQuery(query3);
-
 String query = "SELECT * from app_prior where id=(select max(id) from app_prior)";
+String query3 = "select * from projinfo where id = "+det;
+
+String name=request.getParameter("name");
+
 PreparedStatement statement =  conn.prepareStatement("select sum(ttl) from app_prior");
 ResultSet result = statement.executeQuery();
 result.next();
@@ -331,23 +307,16 @@ String appno=res.getString(1);
 Statement st = conn.createStatement();
 Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
-
+Statement st3 = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
+ResultSet rs3 = st3.executeQuery(query3);
+String query1= "SELECT * from appinfo where prjname='"+name+"'";
+ResultSet rs1 = st1.executeQuery(query1);
 
-String query1= "SELECT * from appinfo";
 String query2= "SELECT * from app_prior";
 ResultSet rs2 = st2.executeQuery(query2);
-ResultSet rs1 = st1.executeQuery(query1);
 {
 %>
-
-  <%if(rs3.next()){ %>
-        
-        <script>
-        var name="<%=rs3.getString("projectname") %>";
-        window.location.replace("tree1.jsp?name="+name);
-        </script>
-        <%} %>
 
 
 <script type="text/javascript">
@@ -489,7 +458,9 @@ z=5;
 }
 var qqq="<%=appno%>"
 document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
+window.alert(document.loginForm.est_archive.value);
 document.loginForm.est_hrs.value =(qqq*document.loginForm.est_archive.value).toFixed(2);
+window.alert(document.loginForm.est_hrs.value);
 a=(100*document.loginForm.est_hrs.value);
 document.loginForm.est_cst.value="$"+a.toFixed(2);
 b=document.loginForm.est_db_size.value*document.loginForm.IA_lic_cst.value;
@@ -509,6 +480,115 @@ function add()
 	document.loginForm.est_archive_cst.value="$"+i.toFixed(2); 
 }
 </script>
+<script>
+function againupdate(){
+	var a,b,c,d,e,z;
+if(document.loginForm.complexity.value=="Low")
+{
+document.loginForm.est_archive.value =700;
+document.loginForm.est_scrn.value ="<=5";
+z=1;
+}
+if(document.loginForm.complexity.value=="Low to Medium")
+{
+document.loginForm.est_archive.value =1000;
+document.loginForm.est_scrn.value ="<=10";
+z=2;
+}
+if(document.loginForm.complexity.value=="Medium")
+{
+document.loginForm.est_archive.value =1400;
+document.loginForm.est_scrn.value ="<=20";
+z=3;
+}
+if(document.loginForm.complexity.value=="Medium to High")
+{
+document.loginForm.est_archive.value =1800;
+document.loginForm.est_scrn.value ="<=25";
+z=4;
+}
+if(document.loginForm.complexity.value=="High")
+{
+document.loginForm.est_archive.value =2500;
+document.loginForm.est_scrn.value ="<=30";
+z=5;
+}
+document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
+document.loginForm.est_hrs.value =(document.loginForm.no_of_app.value*document.loginForm.est_archive.value).toFixed(2);
+a=(100*document.loginForm.est_hrs.value);
+document.loginForm.est_cst.value="$"+a.toFixed(2);
+b=document.loginForm.est_db_size.value*document.loginForm.IA_lic_cst.value;
+document.loginForm.ttl_IA_cst.value ="$"+b.toFixed(2);
+c=10000*document.loginForm.est_db_size.value;
+document.loginForm.ttl_infra_cst.value="$"+c.toFixed(2);
+d=5*b*document.loginForm.IA_maint_cst.value;
+document.loginForm.ttl_IA_prdct_cst.value ="$"+d.toFixed(2);
+e=(a*5)+(b*5)+(c*5)+d;
+document.loginForm.ttl.value="$"+e.toFixed(2);
+}
+</script>
+<script>
+function switchColors0()
+{
+	 
+	links=document.getElementsByTagName("li") ;  
+	var element=document.getElementById("xxx");
+	for (var i = 0 ; i < links.length ; i ++)  
+		links.item(i).style.backgroundColor = 'white' ; 
+	element.style.borderRadius="5px";
+	element.style.marginRight = "70px";
+	element.style.boxSizing = "content-box";
+	element.style.borderColor = "#999";
+	element.style.background="#d1d1d1"; 
+	var list = document.getElementsByTagName("OL")[0];
+	var x=list.getElementsByTagName("LI");
+	for (var i = 0 ; i < x.length ; i ++)  
+		x.item(i).style.backgroundColor = 'black' ; 
+	
+	}
+	</script>
+<script>
+function switchColors()  
+{  
+	links=document.getElementsByTagName("li") ; 	 
+var element=document.getElementById("xxz");
+for (var i = 0 ; i < links.length ; i ++)  
+	links.item(i).style.backgroundColor = 'white' ; 
+element.style.borderRadius="5px";
+element.style.marginRight = "85px";
+element.style.boxSizing = "content-box";
+element.style.borderColor = "#999";
+element.style.background="#d1d1d1";
+var list = document.getElementsByTagName("OL")[0];
+var x=list.getElementsByTagName("LI");
+for (var i = 0 ; i < x.length ; i ++)  
+	x.item(i).style.backgroundColor = 'black' ; 
+
+
+} 
+</script>
+<script>
+function switchColors1()  
+{  
+links=document.getElementsByTagName("li") ;  
+var element=document.getElementById("xxy");
+for (var i = 0 ; i < links.length ; i ++)  
+	links.item(i).style.backgroundColor = 'white' ; 
+element.style.borderRadius="5px";
+element.style.marginRight = "150px";
+element.style.boxSizing = "content-box";
+element.style.borderColor = "#999";
+element.style.background="#d1d1d1";
+var list = document.getElementsByTagName("OL")[0];
+var x=list.getElementsByTagName("LI");
+for (var i = 0 ; i < x.length ; i ++)  
+	x.item(i).style.backgroundColor = 'black' ; 
+
+
+} 
+</script>
+
+
 
  
 <form class="form-signin" name="loginForm" method="post">
@@ -519,11 +599,11 @@ function add()
             <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="#">Onboard-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
+                    <ol class="nav navbar-nav navbar-right">
+                        <li item-selected='true'>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
@@ -535,7 +615,7 @@ function add()
                         <li>
                             <a href="#">Help</a>
                         </li>
-                    </ul>
+                    </ol>
                     
                 </div>
                
@@ -545,7 +625,7 @@ function add()
        
             <div class="row">
             <br>
-                <div class="col-sm-2 col-md-2 sidebar">
+                <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
         <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
                     <ul class="nav nav-sidebar">
@@ -553,32 +633,66 @@ function add()
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
-                <li >App Emphasize Module
+                <li item-expanded='true'>App Emphasize Module
                     <ul>
-                       <li>Project Details
+                       <li item-expanded='true'>Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-selected='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
-                                <li>Parameters</li>
-                                <li>Archival Complexity Calculation</li>
-                                <li>Archival Cost Estimate</li>
+                                <li id="xxx">Parameters</li>
+                                <li id="xxz"><a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">Archival Complexity Calculation</a></li>
+                                <li id="xxy"><a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();">Archival Cost Estimate</a></li>
+                                
                             </ul>
                         </li>
+                        <li><a href="sss.jsp">Application-Prioritized</a></li>
                         
                        <li> <a href="demo.jsp">ROI Calculation</a></li>
                         <li>Estimates</li>
 
                     </ul>
                 </li>
-                <li>Intake Module
+                
+                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+               <ul>
+               <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+               Business</div></a>
                 <ul>
-                <li><a href="business.jsp">Business</a></li>
-                <li><a href="editproject.jsp">Technical</a></li>
-                <li><a href="requirements.jsp">Archival Requirements</a></li>
+                <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Application Information</div></a></li>
+                <li><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Legacy Retention Information</div></a></li>
+                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Archive Data Management</div></a></li>
+                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                System Requirements</div></a></li>
+                
+                </ul></li>
+                <li item-expanded='true'><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Technical</div></a>
+                <ul>
+                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Application Data Information</div></a></li>
+                <li>   <a href="#" data-toggle="tooltip" title="Select Intake Module">             <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Infrastructure & Environment Inforamation</div></a></li>
+                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                Technical Information</div></a></li>
+                </ul>
+                </li>
+                
+                 <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                 Archival Requirements</div></a>
+                 <ul>
+                 <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                 Screen/Report Requirements</div></a></li>
+                 <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
+                 Archive Requirements</div></a></li>
+                 </ul>
+                 </li>
                 </ul>
                 </li>
                 
@@ -589,6 +703,11 @@ function add()
          </div>
    </div>
                 </div>
+                <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 
    <script>
   $(function () {
@@ -613,7 +732,7 @@ function add()
                     <br/><br/><br/>
                     
                     
-                <div class="col-md-9">
+                <div class="col-md-8">
           
             
 
@@ -647,6 +766,59 @@ function add()
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
+<div class="row">
+		
+        
+            <div class="row bs-wizard" style="border-bottom:0;">
+                
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Project Information</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Final</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+        
+        
+        
+	</div>
+        
+<script> 
+links=document.getElementsByTagName("li") ;  
+var element=document.getElementById("xxx");
+for (var i = 0 ; i < links.length ; i ++)  
+	links.item(i).style.backgroundColor = 'white' ; 
+element.style.borderRadius="5px";
+element.style.marginRight = "70px";
+element.style.boxSizing = "content-box";
+element.style.borderColor = "#999";
+element.style.background="#d1d1d1"; 
+var list = document.getElementsByTagName("OL")[0];
+var x=list.getElementsByTagName("LI");
+for (var i = 0 ; i < x.length ; i ++)  
+	x.item(i).style.backgroundColor = 'black' ; 
+</script>
+
+
+
               
                     <br/><br/><br/>
                     <div class="panel-group" id="panels1"> 
@@ -655,7 +827,7 @@ function add()
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Parameters   </a> </h4> 
                             </div>  
                                                        
-                            <div id="collapse1" class="panel-collapse collapse "> 
+                            <div id="collapse1" class="panel-collapse collapse in"> 
                                 <div class="panel-body text-left">
                                 
                                 <%if(rs.next()){ %>
@@ -688,10 +860,13 @@ function add()
                                             <label class="control-label" for="formInput526">Labor Cost Per Hour for IA Dev Team</label>
                                             <input type="text" class="form-control" id="formInput526"  name="lab_cst" value="<%=rs.getString("lab_cst")%>">
                                         </div>
+                                        <div>
+                                        <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                        </div>
                                                                         </div>                                 
                             </div>                             
                         </div> 
-                  
+    
                                <div class="panel panel-default"> 
                             <div class="panel-heading"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">    Archival Complexity Calculation    </a> </h4> 
@@ -729,7 +904,7 @@ function add()
             
             <input  class="js-filter form-control" type="text" style="display:none" value="" id="myDiv1">
           </th>
-          <th> <!-- select filter -->
+          <th> <!-- select filter --
             
             <input  class="js-filter  form-control" type="text" style="display:none" value="" id="myDiv2">
           </th>
@@ -883,7 +1058,11 @@ for(var i=0; i<edit_row.length; i++) {
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total</label>                                             
                                             <input type="text" class="form-control" id="ttl"  name="ttl"  value="<%=rs.getString("ttl")%>" > 
-                                        </div>                                                     
+                                        </div>   
+                                        <div>
+                                        <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                        <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors0();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
+                                        </div>                                                  
                                 </div>                                 
                             </div>                             
                         </div>
@@ -927,6 +1106,7 @@ for(var i=0; i<edit_row.length; i++) {
                                             <label class="control-label" for="formInput664">Estimated Archival Cost for CAR Projection</label>                                             
                                             <input type="text" class="form-control" id="est_archive_cst" name="est_archive_cst" value="<%=rs.getString("est_archive_cst")%>"> 
                                         </div>
+                                          <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:black"> <span class="glyphicon glyphicon-chevron-left"></span> Previous</a></button>
                         
                         </div>
                         </div>
@@ -960,8 +1140,9 @@ for(var i=0; i<edit_row.length; i++) {
                                    
                                    
 <button type="button" class="btn btn-primary" onclick="OnButton1()">Save</button>
-<button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" onclick="window.location.href='test.jsp'">Next<span class="glyphicon glyphicon-chevron-right"></span></button>
-        
+
+        <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='sss.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+                            
      
                     <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
                                       <% } %> 

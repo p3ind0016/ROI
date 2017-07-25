@@ -40,8 +40,8 @@ public class Appin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pid =request.getParameter("pid");
-				String appname = request.getParameter("appname");
+		String prjname = request.getParameter("prjname");		
+		String appname = request.getParameter("appname");
 				String descr = request.getParameter("descr");
 				String rod = request.getParameter("rod");
 				String dbsize = request.getParameter("dbsize");
@@ -64,11 +64,11 @@ public class Appin extends HttpServlet {
 		          String myDriver = "org.gjt.mm.mysql.Driver";
 		          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
 		          Class.forName(myDriver);
-		          Connection conn = DriverManager.getConnection(myUrl, "root", "root");
+		          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
 		        
 		         
 		          // the mysql insert statement
-		          String query = " insert into appinfo (pid,appname,descr,rod,dbsize,dbloc,legappsme)"
+		          String query = " insert into appldetail (prjname,appname,descr,rod,dbsize,dbloc,legappsme)"
 		            + " values (? ,? ,? ,?, ?, ?, ?)";
 
 		          // create the mysql insert preparedstatement
@@ -81,7 +81,7 @@ public class Appin extends HttpServlet {
 		          //System.out.println("would you like to have extra food today say y or n");
 		          //extra=sin.next();
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
-		          preparedStmt.setString (1, pid);
+		          preparedStmt.setString (1, prjname);
 		          preparedStmt.setString (2, appname);
 		          preparedStmt.setString (3, descr);
 		          preparedStmt.setString (4, rod);
@@ -102,8 +102,8 @@ public class Appin extends HttpServlet {
 		          System.err.println(e.getMessage());
 		        }
 		        // return response
-		        request.setAttribute("value", pid);
-		        request.getRequestDispatcher("/firstinsert.jsp").forward(request, response);
+		       // request.setAttribute("value", pid);
+		        response.sendRedirect("firstinsert.jsp");
 				
 
 	}

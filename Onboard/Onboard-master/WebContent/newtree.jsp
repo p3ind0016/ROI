@@ -34,7 +34,6 @@
   
    <script src="js/jquery.js"></script>
   <script src="js/jstree.min.js"></script>
-   <script src="js/multiplepages.js"></script>
 
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
@@ -301,23 +300,19 @@ $(function() {
     
 </head>
 <body class='default'>
+    
     <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
 
 <%
-String det=(String)session.getAttribute("theName");
 double ans=0.0;
 try {
-	
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
-
-String query3 = "select * from projinfo where id = "+det;
-Statement st3 = conn.createStatement();
-ResultSet rs3 = st3.executeQuery(query3);
-
 String query = "SELECT * from app_prior where id=(select max(id) from app_prior)";
+String query1= "SELECT * from appinfo";
+String query2= "SELECT * from app_prior";
 PreparedStatement statement =  conn.prepareStatement("select sum(ttl) from app_prior");
 ResultSet result = statement.executeQuery();
 result.next();
@@ -332,24 +327,11 @@ Statement st = conn.createStatement();
 Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
 
-ResultSet rs = st.executeQuery(query);
-
-String query1= "SELECT * from appinfo";
-String query2= "SELECT * from app_prior";
-ResultSet rs2 = st2.executeQuery(query2);
 ResultSet rs1 = st1.executeQuery(query1);
+ResultSet rs = st.executeQuery(query);
+ResultSet rs2 = st2.executeQuery(query2);
 {
 %>
-
-  <%if(rs3.next()){ %>
-        
-        <script>
-        var name="<%=rs3.getString("projectname") %>";
-        window.location.replace("tree1.jsp?name="+name);
-        </script>
-        <%} %>
-
-
 <script type="text/javascript">
   var e;
  function updatesum() {
@@ -515,16 +497,13 @@ function add()
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
-            
-            <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="#">Onboard-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="#">Onboard</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
                             <a href="#">Settings</a>
@@ -538,7 +517,6 @@ function add()
                     </ul>
                     
                 </div>
-               
             </div>
         </nav>
         </div>
@@ -610,7 +588,7 @@ function add()
   </script>
   
 
-                    <br/><br/><br/>
+                    <br/><br/><br/><br/><br/>
                     
                     
                 <div class="col-md-9">
@@ -647,15 +625,15 @@ function add()
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-              
-                    <br/><br/><br/>
+                &nbsp;
+                    <br/><br/><br/><br/>
                     <div class="panel-group" id="panels1"> 
                                                 <div class="panel panel-default">
         <div class="panel-heading"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Parameters   </a> </h4> 
                             </div>  
                                                        
-                            <div id="collapse1" class="panel-collapse collapse "> 
+                            <div id="collapse1" class="panel-collapse collapse"> 
                                 <div class="panel-body text-left">
                                 
                                 <%if(rs.next()){ %>
@@ -663,7 +641,7 @@ function add()
                                     
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput526">Project Name</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="prj_name" value=<%=rs3.getString("projectname") %>>
+                                            <input type="text" class="form-control" id="formInput526"  name="prj_name" value="<%=rs.getString("prj_name")%>">
                                         </div>
                                        
                                         <div class="form-group"> 
@@ -838,14 +816,6 @@ for(var i=0; i<edit_row.length; i++) {
                                                 <option>Medium to High</option> 
                                                 <option>High</option>                                                 
                                             </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="formInput664">Read Only Date</label>                                             
-                                            <input type="text" class="form-control" id="est_archive"  name="read_date" onChange="againupdate()" value="<%=rs.getString("read_date")%>"> 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="formInput664">SME Date</label>                                             
-                                            <input type="text" class="form-control" id="est_archive"  name="sme_date" onChange="againupdate()" value="<%=rs.getString("sme_date")%>"> 
                                         </div>          
                                         
                                     <div class="form-group">
@@ -938,6 +908,7 @@ for(var i=0; i<edit_row.length; i++) {
                           document.loginForm.action = "Displaydb"
                         	  document.loginForm.submit();   
                           // document.Form1.target = "_blank";    // Open in a new window
+document.loginForm.action = "infodb"
                           document.loginForm.submit();             // Submit the page
 
                           return true;
@@ -960,7 +931,6 @@ for(var i=0; i<edit_row.length; i++) {
                                    
                                    
 <button type="button" class="btn btn-primary" onclick="OnButton1()">Save</button>
-<button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" onclick="window.location.href='test.jsp'">Next<span class="glyphicon glyphicon-chevron-right"></span></button>
         
      
                     <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
@@ -970,7 +940,7 @@ for(var i=0; i<edit_row.length; i++) {
                             </div>
                              <%
 }
-}}
+}
 catch(Exception e){}
 %>
 </body>

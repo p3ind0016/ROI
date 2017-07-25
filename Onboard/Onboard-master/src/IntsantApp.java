@@ -40,6 +40,7 @@ public class IntsantApp extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 				String appname = request.getParameter("appname");
+				String prjname = request.getParameter("prjname");
 				
 				
 		           
@@ -62,8 +63,8 @@ public class IntsantApp extends HttpServlet {
 		        
 		         
 		          // the mysql insert statement
-		          String query = " insert into appinfo (appname)"
-		            + " values (?)";
+		          String query = " insert into appinfo (appname,prjname)"
+		            + " values (?,?)";
 
 		          // create the mysql insert preparedstatement
 		          //Scanner sin=new Scanner(System.in);
@@ -76,6 +77,7 @@ public class IntsantApp extends HttpServlet {
 		          //extra=sin.next();
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, appname);
+		          preparedStmt.setString (2, prjname);
 		         
 		          
 
