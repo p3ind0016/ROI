@@ -512,32 +512,32 @@ if(rs.next()){
                                             <label class="control-label" for="formInput198">
                                                Project ID&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project ID" name="pid" value="<%=rs.getString("id")%>" >
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
                                         </div>
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput198">
                                                Project Name&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="projectname" value="<%=rs.getString("projectname")%>" >
+                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" >
                                         </div>
                                         
                                 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput229">Description
 </label>
-                                            <input type="text" class="form-control" id="formInput229" placeholder="Description" name="descr"  value="<%=rs.getString("descr")%>">
+                                            <input type="text" class="form-control" id="formInput229" placeholder="Description" name="descr"  value="<%=rs3.getString("descr")%>">
                                         </div>
                                        <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">No of Applications</label>
-            <input placeholder="No of Applications" id="date" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("appno")%>">
+            <input placeholder="No of Applications" id="date" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("appno")%>">
           </div>
           
         </div>  
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Project Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("Startdate")%>">
+            <input placeholder="dd/mm/yyyy" id="date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Startdate")%>">
           </div>
           
         </div>  
@@ -545,7 +545,7 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required"> Initiate Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("Intdate")%>">
+            <input placeholder="dd/mm/yyyy" id="date" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Intdate")%>">
           </div>
           
         </div>  
@@ -553,7 +553,7 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Plan Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("Plandate")%>">
+            <input placeholder="dd/mm/yyyy" id="date" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Plandate")%>">
           </div>
           
         </div>    
@@ -561,7 +561,7 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Execution Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("Execdate")%>">
+            <input placeholder="dd/mm/yyyy" id="date" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Execdate")%>">
           </div>
           
         </div>            
@@ -569,14 +569,14 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Hypercare Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("Hyperdate")%>">
+            <input placeholder="dd/mm/yyyy" id="date" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Hyperdate")%>">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Project End Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs.getString("Enddate")%>">
+            <input placeholder="dd/mm/yyyy" id="date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Enddate")%>">
           </div>
           
         </div>                 
