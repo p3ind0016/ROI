@@ -11,12 +11,7 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-  <script src="js/jquery.js"></script>
-  <script src="js/jstree.min.js"></script>
-
-    <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
+   <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
 
@@ -88,8 +83,96 @@
             }
         });
     </script>
-    <script src="//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js"></script><script src="//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js"></script><script src="//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js"></script><meta charset="UTF-8"><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/whqet/pen/EJgwb">
+     <style>
+    .bar {
+  background-color: lightblue;
+  height: 100%;
+  text-align:center;
+} 
 
+</style>
+  
+<script type="text/javascript">
+    function EnableDisableTextBox(chkROD) {
+        var txtROD = document.getElementById("txtROD");
+        txtROD.disabled = chkROD.checked ? false : true;
+        if (!txtROD.disabled) {
+            txtROD.focus();
+        }
+        
+    }
+</script>
+<script>
+
+$(function() {
+    $("#datamig").change(function() {
+        if ($(this).val() == "yes") {
+            console.log(true);
+            $("#textbox").removeAttr("disabled");
+        }
+        else {
+            console.log(false);
+            $("#textbox").attr("disabled", "disabled");
+        }
+    });
+});
+$(function() {
+    $("#datamig").change(function() {
+        if ($(this).val() == "yes") {
+            console.log(true);
+            $("#textbox1").removeAttr("disabled");
+        }
+        else {
+            console.log(false);
+            $("#textbox1").attr("disabled", "disabled");
+        }
+    });
+});
+
+
+</script>
+<script type="text/javascript">
+    function ShowHideDiv() {
+        var adMigrated = document.getElementById("adMigrated");
+        var adMigratedDet = document.getElementById("adMigratedDet");
+        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
+    }
+</script>
+
+<script type="text/javascript">
+    function ShowHideDiv() {
+        var arcNeed = document.getElementById("arcNeed");
+        var arcReason = document.getElementById("arcReason");
+        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
+        var arcComment = document.getElementById("arcComment");
+        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
+    }
+</script>
+<style>
+.bs-wizard {margin-top: 40px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+</style>
 
 <style class="cp-pen-styles">@-webkit-keyframes myanimation {
   from {
@@ -258,109 +341,6 @@ ul.checkout-bar a {
   }
 }
 </style>
-     <style>
-    .bar {
-  background-color: lightblue;
-  height: 100%;
-  text-align:center;
-} 
-
-</style>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="expdate"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'yyyy/mm/dd',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-    </script>
-  
-<script type="text/javascript">
-    function EnableDisableTextBox(chkROD) {
-        var txtROD = document.getElementById("txtROD");
-        txtROD.disabled = chkROD.checked ? false : true;
-        if (!txtROD.disabled) {
-            txtROD.focus();
-        }
-        
-    }
-</script>
-<script>
-
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox").attr("disabled", "disabled");
-        }
-    });
-});
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox1").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox1").attr("disabled", "disabled");
-        }
-    });
-});
-
-
-</script>
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var adMigrated = document.getElementById("adMigrated");
-        var adMigratedDet = document.getElementById("adMigratedDet");
-        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
-    }
-</script>
-
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var arcNeed = document.getElementById("arcNeed");
-        var arcReason = document.getElementById("arcReason");
-        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
-        var arcComment = document.getElementById("arcComment");
-        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
-    }
-</script>
-  <style>
-.bs-wizard {margin-top: 40px;}
-
-/*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
-.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
-.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
-.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
-.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
-.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
-.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
-.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
-.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
-.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
-/*END Form Wizard*/
-
-</style>
 <script>
 function switchColors0()  
 {  
@@ -523,7 +503,7 @@ ResultSet rs4 = st4.executeQuery(query4);
                         </li>
                          <li><a href="applnprior.jsp">Application-Prioritized</a></li>
                        <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                     
 
                     </ul>
                 </li>
