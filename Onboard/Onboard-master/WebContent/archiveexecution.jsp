@@ -99,6 +99,7 @@
 } 
   </style>
   
+  
 
 <script>
 function openNav() {
@@ -110,6 +111,12 @@ function closeNav() {
 }
 </script>
 <style>
+input
+{
+border:none;
+border-color:transparent;
+width:200px;
+}
 .task
 {
 width:250px;
@@ -237,6 +244,11 @@ $scope.open=function()
 {
 $scope.www=true;
 };
+
+$scopr.panel=function()
+{$scope.collaps=false;
+	}
+
 });
 </script>
 <script>
@@ -258,7 +270,7 @@ function remove(x,y)
 		window.alert("do u want to delete "+y+" subtask");
 		var f=document.loginForm;
 	    f.method="post";
-	    f.action='execution1?p='+a+'&q='+b;
+	    f.action='execution1?p='+x+'&q='+y;
 	       f.submit();
 		}
 		}
@@ -274,16 +286,23 @@ document.loginForm.submit();
 	}
 </script>
 <script>
-function got(x,y)
+function got(x,y,z)
 {
 	var f=document.loginForm;
     f.method="post";
-    f.action='execution?p='+x+'&q='+y;
+    f.action='execution?sub_task_id='+x+'&subtask_name='+y+'&task_id='+z;
+    f.submit();
+	}
+</script>
+<script>
+function gott(x)
+{
+	var f=document.loginForm;
+    f.method="post";
+    f.action='execution?r='+x;
     f.submit();
 
 	}
-
-
 </script>
   
 <script type="text/javascript">
@@ -295,6 +314,23 @@ function got(x,y)
         }
         
     }
+</script>
+<script>
+function addsubtask(a,c)
+{
+	var f=document.loginForm;
+	var task ="";
+	var subtask="";
+	var subid=c;
+	var tsid="";
+	var subsubid=a;
+	var subsubname=document.getElementsByName('subsubtask').value;
+	alert(subsubname)
+	
+    f.method="post";
+    f.action='execution?subsubid='+subsubid+'&subsubname='+subsubname+'&sub_task_id='+subid+'&newtask='+task+'&subtask_name='+subtask+'&task_id'+tsid;
+    f.submit();
+	}
 </script>
 <script>
 
@@ -356,6 +392,10 @@ ResultSet rs3 = st3.executeQuery(query3);
 String query = "select * from projinfo where id = "+det;
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
+String query4 = "select * from dummy";
+Statement st4 = conn.createStatement();
+ResultSet rs4 = st4.executeQuery(query4);
+if(rs4.next())
 {
 %>
 <form class="form-signin" name="loginForm" method="post" action="execution">
@@ -403,7 +443,7 @@ ResultSet rs = st.executeQuery(query);
                 <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
-                       <li item-expanded='true'>Project Details
+                       <li item-expanded='true'><input type="text" value="project details"/>
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -477,8 +517,40 @@ ResultSet rs = st.executeQuery(query);
     	 document.getElementById('subta'+x+j).style.display='table-row';
     	 }
     	 document.getElementById('subsub').style.display='table-row';
+    	
               }
-      </script>         
+      function collapse(x){
+    		 for(var j=0;j<5;j+=1){
+    	 document.getElementById('subta'+x+j).style.display='none';
+    	 }
+    		
+    	 document.getElementById('subsub').style.display='table-row';
+    	
+              }
+      </script>  
+      <script>
+      function expan(x,y){
+ 		for(var j=0;j<5;j++){
+ 			if(y==j)
+ 				document.getElementById('subsubsub'+x+j).style.display='table-row';	 	 
+ 	
+           }
+ 		for(var i=0;i<5;i++)
+ 			document.getElementById('subtak'+x+y+i).style.display='table-row';
+      }
+      function collap(x,y)
+      {
+    	  for(var j=0;j<5;j++){
+               if(y==j)   
+    		  document.getElementById('subsubsub'+x+j).style.display='none';	 	
+   	
+             }
+    	  for(var i=0;i<5;i++)
+   			document.getElementById('subtak'+x+y+i).style.display='none';
+      }
+      
+      
+      </script>
                
                
                
@@ -569,20 +641,22 @@ ResultSet rs = st.executeQuery(query);
 <tbody>
 
          <%
-         int i=0;      
+         int i=0;
+         
 while(rs3.next()){
 	
 
 %>
 <tr style="text-align:center;" >
 <td style="width:200px;"><button type="button" style="float:left;" onClick="expand('<%=i%>')">></button>
+<button type="button" style="float:left;" onClick="collapse('<%=i%>')">v</button>
 <span style="color:#3071a9;"><%=rs3.getString(1)%></span></td>
-<td><input  type="text"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(3) %>" /></td>
-<td><input type="date" name="act_srt_date<%=i %>" value="<%=rs3.getString(4) %>" /></td>
-<td><input  type="date" name="act_end_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
-<td><input  type="date" name="pln_srt_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
-<td><input  type="date" name="pln_end_date<%=i %>" value="<%=rs3.getString(7) %>"/></td>
-<td><input  type="text" placeholder="enter" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" /></td>
+<td><input  type="text"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(2) %>" /></td>
+<td><input type="date" name="act_srt_date<%=i %>" value="<%=rs3.getString(3) %>" /></td>
+<td><input  type="date" name="act_end_date<%=i %>" value="<%=rs3.getString(4) %>"  /></td>
+<td><input  type="date" name="pln_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
+<td><input  type="date" name="pln_end_date<%=i %>" value="<%=rs3.getString(6) %>"/></td>
+<td><input  type="text" placeholder="enter" name="hrs<%=i %>" value="<%=rs3.getString(8) %>" /></td>
 <td><progress name="progress<%=i %>" value="30" max="100"></progress></td>
 <td></td>
 <td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>')" value="Delete"></td>
@@ -591,42 +665,75 @@ while(rs3.next()){
 
 </tr>
 <%
-String query2 = "select * from execution where task = '"+rs3.getString(1)+"' and subtask is not null";
+String query2 = "select * from subtask where taskid = '"+rs3.getString(10)+"'";
 Statement st2 = conn.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
 int j=0;
 while(rs2.next()){
 %>
-<tr style="display:none" id="subta<%=i %><%=j%>">
-<td style="width:200px;"><%=rs2.getString(10)%></td>
-<td><input  type="text"   placeholder="enter" name="mem_ass<%=i %><%=j %>" value="<%=rs2.getString(3) %>" /></td>
-<td><input type="date" name="act_srt_date<%=i %><%=j %>" value="<%=rs2.getString(4) %>" /></td>
-<td><input  type="date" name="act_end_date<%=i %><%=j %>" value="<%=rs2.getString(5) %>"  /></td>
-<td><input  type="date" name="pln_srt_date<%=i %><%=j %>" value="<%=rs2.getString(6) %>"  /></td>
-<td><input  type="date" name="pln_end_date<%=i %><%=j %>" value="<%=rs2.getString(7) %>"/></td>
+<tr style="display:none;text-align:center;background-color:lightyellow;"  id="subta<%=i %><%=j%>">
+<td ><button type="button" onClick="expan('<%=i%>','<%=j %>')">></button>
+<button type="button"  onClick="collap('<%=i%>','<%=j %>')">v</button>
+<%=rs2.getString(3)%></td>
+<td><input  type="text"   placeholder="enter" name="mem_ass<%=i %><%=j %>"  onClick="style='border:1px grey';" value="<%=rs2.getString(4) %>" /></td>
+<td><input type="date" name="act_srt_date<%=i %><%=j %>" value="<%=rs2.getString(5) %>" /></td>
+<td><input  type="date" name="act_end_date<%=i %><%=j %>" value="<%=rs2.getString(6) %>"  /></td>
+<td><input  type="date" name="pln_srt_date<%=i %><%=j %>" value="<%=rs2.getString(7) %>"  /></td>
+<td><input  type="date" name="pln_end_date<%=i %><%=j %>" value="<%=rs2.getString(8) %>"/></td>
 <td><input  type="text" placeholder="enter" name="hrs<%=i %><%=j %>" value="<%=rs2.getString(9) %>" /></td>
 <td><progress value="20" max="100"></progress></td>
 <td></td>
-<td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>','<%=rs2.getString(10) %>')" value="Delete"></td>
-<td style="display:none"><input type="text" name="subtaks<%=i %><%=j %>" value="<%=rs2.getString(10) %>" hidden /></td>
+<td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>','<%=rs2.getString(9) %>')" value="Delete"></td>
+<td style="display:none"><input type="text" name="subtaks<%=i %><%=j %>" value="<%=rs2.getString(9) %>" hidden /></td>
+</tr>
+<%
+String query5 = "select * from subsubtask where subid = '"+rs2.getString(2)+"'";
+Statement st5 = conn.createStatement();
+ResultSet rs5 = st5.executeQuery(query5);
+int k=0;
+while(rs5.next()){
+%>
+<tr style="display:none;text-align:center;background-color:lightgreen;"  id="subtak<%=i %><%=j%><%=k %>">
+<td >
+
+<%=rs5.getString(3)%></td>
+<td><input  type="text"   placeholder="enter" name="mem_ass<%=i %><%=j %><%=k %>"  onClick="style='border:1px grey';" value="<%=rs5.getString(4) %>" /></td>
+<td><input type="date" name="act_srt_date<%=i %><%=j %><%=k %>" value="<%=rs5.getString(5) %>" /></td>
+<td><input  type="date" name="act_end_date<%=i %><%=j %><%=k %>" value="<%=rs5.getString(6) %>"  /></td>
+<td><input  type="date" name="pln_srt_date<%=i %><%=j %><%=k %>" value="<%=rs5.getString(7) %>"  /></td>
+<td><input  type="date" name="pln_end_date<%=i %><%=j %><%=k %>" value="<%=rs5.getString(8) %>"/></td>
+<td><input  type="text" placeholder="enter" name="hrs<%=i %><%=j %><%=k %>" value="<%=rs5.getString(9) %>" /></td>
+<td><progress value="20" max="100"></progress></td>
+<td></td>
+<td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>','<%=rs2.getString(9) %>')" value="Delete"></td>
+<td style="display:none"><input type="text" name="subtaks<%=i %><%=j %>" value="<%=rs2.getString(9) %>" hidden /></td>
+</tr>
+<%
+k++;
+}
+%>
+<tr id="subsubsub<%=i %><%=j %>" style="display:none;">
+<td><input type="text" name="subsubtask" id="subsubtask" placeholder="+ Enter the subsubtask" style="width:200px;"><br/><input type="button" style="width:50px;float:right;" onClick="addsubtask('<%=rs4.getString(3) %>,<%=rs2.getString(2) %>')" value="Add"></td>
 </tr>
 <%
 j++;
 }
 %>
 <tr id="subsub">
-<td><input type="text" id="newsubtask" name="newsubtask" placeholder="+ Enter the subtask"><br/><input type="button" onClick="got('<%=rs3.getString(1) %>',document.getElementsByName('newsubtask')['<%=i %>'].value)"  value="Add"></td>
+<td><input type="text" style="display:inline" id="newsubtask" name="newsubtask" placeholder="+ Enter the subtask" style="width:100px;"><br/><input type="button" style="width:50px;float:right;" onClick="got('<%=rs4.getString(2) %>',document.getElementsByName('newsubtask')['<%=i %>'].value,'<%=rs3.getString(10) %>')"  value="Add"></td>
 </tr>
 <%
 i++;
-} %>
+}
+%>
 
 </tbody>
 </table>
 <div>
 <input type="text" class="another" name="newtask" style="margin-left:10px;width:200px;cursor:auto;" placeholder="+ Enter Some text">
-<input type="submit" class="btn"  value="Add">
 <input type="button"  class="btn" onClick="sub('<%=i %>')" value="submit">
+<input type="submit" class="btn" onClick="gott('<%=rs4.getString(1) %>')" value="Add">
+
 </div>
 </div>
 <script type="text/javascript">
@@ -637,8 +744,9 @@ i++;
                                               </div>                             
                         </div>                       
        <%
-}
-}
+
+
+}}
 catch(Exception e){}
 %>
 </form>
