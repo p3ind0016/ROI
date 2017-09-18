@@ -225,54 +225,14 @@ th
 }
 </style>
 <script>
-var app=angular.module("myapp",['ngAnimate'])
-app.controller("myctrl",function($scope)
-{
-$scope.www=false;
-$scope.arr=[
-
-];
-
-
-$scope.cal=function()
-{
-  $scope.arr.push({task:$scope.name});
-  $scope.www=false;
-$scope.name="";
-};
-$scope.open=function()
-{
-$scope.www=true;
-};
-
-$scopr.panel=function()
-{$scope.collaps=false;
-	}
-
-});
-</script>
-<script>
 function remove(x,y)
 {
-	if (typeof y == 'undefined')
-	{
-	window.alert("do u want to delete "+x+" task");
 	
-	 document.loginForm.action = "execution1?p="+x;
-         // document.Form1.target = "_blank";    // Open in a new window
-
-         document.loginForm.submit();             // Submit the page
-
-         return true;
-	}
-	else
-		{
-		window.alert("do u want to delete "+y+" subtask");
 		var f=document.loginForm;
 	    f.method="post";
 	    f.action='execution1?p='+x+'&q='+y;
 	       f.submit();
-		}
+		
 		}
 
 </script>
@@ -305,18 +265,9 @@ function gott(x)
 	}
 </script>
   
-<script type="text/javascript">
-    function EnableDisableTextBox(chkROD) {
-        var txtROD = document.getElementById("txtROD");
-        txtROD.disabled = chkROD.checked ? false : true;
-        if (!txtROD.disabled) {
-            txtROD.focus();
-        }
-        
-    }
 </script>
 <script>
-function addsubtask(a,c)
+function addsubtask(a,b,c)
 {
 	var f=document.loginForm;
 	var task ="";
@@ -324,12 +275,13 @@ function addsubtask(a,c)
 	var subid=c;
 	var tsid="";
 	var subsubid=a;
-	var subsubname=document.getElementsByName('subsubtask').value;
-	alert(subsubname)
+	var subsubname=b;
 	
     f.method="post";
     f.action='execution?subsubid='+subsubid+'&subsubname='+subsubname+'&sub_task_id='+subid+'&newtask='+task+'&subtask_name='+subtask+'&task_id'+tsid;
     f.submit();
+	
+    
 	}
 </script>
 <script>
@@ -361,22 +313,63 @@ $(function() {
 
 
 </script>
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var adMigrated = document.getElementById("adMigrated");
-        var adMigratedDet = document.getElementById("adMigratedDet");
-        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
-    }
-</script>
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var arcNeed = document.getElementById("arcNeed");
-        var arcReason = document.getElementById("arcReason");
-        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
-        var arcComment = document.getElementById("arcComment");
-        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
-    }
-</script>
+ <style>
+ 
+.progressTSK {
+  overflow: hidden;
+ 
+  padding: 0 15px;
+  width: 220px;
+  height: 34px;
+  background: #d3d5d9;
+  border-radius: 17px;
+  background-image: -webkit-linear-gradient(top, #ebecef, #bfc3c7);
+  background-image: -moz-linear-gradient(top, #ebecef, #bfc3c7);
+  background-image: -o-linear-gradient(top, #ebecef, #bfc3c7);
+  background-image: linear-gradient(to bottom, #ebecef, #bfc3c7);
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 6px #b6babe, 0 7px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 6px #b6babe, 0 7px rgba(255, 255, 255, 0.1);
+}
+
+.progressTSK-val {
+  float: right;
+  margin-left: 15px;
+  font: bold 15px/34px Helvetica, Arial, sans-serif;
+  color: #333;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.progressTSK-bar {
+  display: block;
+  overflow: hidden;
+  height: 8px;
+  margin: 13px 0;
+  background: #b8b8b8;
+  border-radius: 4px;
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), transparent 60%);
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), transparent 60%);
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.2), transparent 60%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent 60%);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.progressTSK-in {
+  display: block;
+  min-width: 3px;
+  height: 20px;
+  background: #1997e6;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0) 61%, rgba(0, 0, 0, 0.2)), -webkit-linear-gradient(left, #147cd6, #24c1fc);
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0) 61%, rgba(0, 0, 0, 0.2)), -moz-linear-gradient(left, #147cd6, #24c1fc);
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0) 61%, rgba(0, 0, 0, 0.2)), -o-linear-gradient(left, #147cd6, #24c1fc);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0) 61%, rgba(0, 0, 0, 0.2)), linear-gradient(to right, #147cd6, #24c1fc);
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+ 
+  
+  </style>
 
 <body>  
 <%@page language="java"%>
@@ -641,7 +634,7 @@ if(rs4.next())
 <tbody>
 
          <%
-         int i=0;
+         int i=0,z=0;
          
 while(rs3.next()){
 	
@@ -657,13 +650,68 @@ while(rs3.next()){
 <td><input  type="date" name="pln_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
 <td><input  type="date" name="pln_end_date<%=i %>" value="<%=rs3.getString(6) %>"/></td>
 <td><input  type="text" placeholder="enter" name="hrs<%=i %>" value="<%=rs3.getString(8) %>" /></td>
-<td><progress name="progress<%=i %>" value="30" max="100"></progress></td>
+<td><div class="progressTSK">
+  <span class="progressTSK-val">0%</span>
+  <span class="progressTSK-bar"><span class="progressTSK-in" style="width: 0%"></span></span>
+</div></td>
 <td></td>
-<td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>')" value="Delete"></td>
+<td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>','0')" value="Delete"></td>
 <td style="display:none"><input type="text" name="taks<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
 <td style="display:none"><input type="text" name="tas" value="<%=rs3.getString(1) %>" hidden /></td>
 
 </tr>
+<script>
+ var volume = { 
+
+		    init: function(){
+		        $('.progressTSK-in').on('click', volume.change);
+		        $('.progressTSK-in').on('mousedown', volume.drag);
+		    },
+		      
+		    change: function(e){
+		        e.preventDefault();
+		        var percent = helper.getFrac(e, $(this)) * 100;
+
+		        $('.progressTSK-in').animate({ width: percent+'%' }, 100);
+		        volume.update(percent);
+		    },
+		  
+		    update: function(percent){
+		      $('.progressTSK-val').text(Math.round(percent)+'%');
+		      //console.log(percent);
+		    },
+
+		    drag: function(e){
+		        e.preventDefault();
+		        $(document).on('mousemove', volume.moveHandler);
+		        $(document).on('mouseup', volume.stopHandler);
+		    },
+
+		    moveHandler: function(e){
+		        var holderOffset = $('.progressTSK').offset().left,
+		            sliderWidth = $('.progressTSK').width(),
+		            posX = Math.min(Math.max(0, e.pageX - holderOffset), sliderWidth);
+
+		        $('.progressTSK-in').width(posX);
+		        volume.update(posX / sliderWidth * 100);
+		    },
+
+		    stopHandler: function(){
+		        $(document).off('mousemove', volume.moveHandler);
+		        $(document).off('mouseup', volume.stopHandler);
+		    }
+		  
+		}
+
+		var helper = {
+		    getFrac: function(e, $this){
+		        return ( e.pageX - $this.offset().left ) / $this.width();
+		    }
+		}
+
+		volume.init();
+ </script>
+ 
 <%
 String query2 = "select * from subtask where taskid = '"+rs3.getString(10)+"'";
 Statement st2 = conn.createStatement();
@@ -683,8 +731,8 @@ while(rs2.next()){
 <td><input  type="text" placeholder="enter" name="hrs<%=i %><%=j %>" value="<%=rs2.getString(9) %>" /></td>
 <td><progress value="20" max="100"></progress></td>
 <td></td>
-<td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>','<%=rs2.getString(9) %>')" value="Delete"></td>
-<td style="display:none"><input type="text" name="subtaks<%=i %><%=j %>" value="<%=rs2.getString(9) %>" hidden /></td>
+<td><input type="button"  class="delete" onClick="remove('<%=rs2.getString(3) %>','1')" value="Delete"></td>
+<td style="display:none"><input type="text" name="subtaks<%=i %><%=j %>" value="<%=rs2.getString(3) %>" hidden /></td>
 </tr>
 <%
 String query5 = "select * from subsubtask where subid = '"+rs2.getString(2)+"'";
@@ -706,14 +754,15 @@ while(rs5.next()){
 <td><progress value="20" max="100"></progress></td>
 <td></td>
 <td><input type="button"  class="delete" onClick="remove('<%=rs3.getString(1) %>','<%=rs2.getString(9) %>')" value="Delete"></td>
-<td style="display:none"><input type="text" name="subtaks<%=i %><%=j %>" value="<%=rs2.getString(9) %>" hidden /></td>
+<td style="display:none"><input type="text" name="subsubtaks<%=i %><%=j %><%=k %>" value="<%=rs5.getString(3) %>" hidden /></td>
 </tr>
 <%
 k++;
 }
+z=i*2+j;
 %>
 <tr id="subsubsub<%=i %><%=j %>" style="display:none;">
-<td><input type="text" name="subsubtask" id="subsubtask" placeholder="+ Enter the subsubtask" style="width:200px;"><br/><input type="button" style="width:50px;float:right;" onClick="addsubtask('<%=rs4.getString(3) %>,<%=rs2.getString(2) %>')" value="Add"></td>
+<td><input type="text" name="subsubtask" id="subsubtask" placeholder="+ Enter the subsubtask" style="width:200px;"><br/><input type="button" style="width:50px;float:right;" onClick="addsubtask('<%=rs4.getString(3) %>',document.getElementsByName('subsubtask')['<%=z%>'].value,'<%=rs2.getString(2) %>')" value="Add"></td>
 </tr>
 <%
 j++;
