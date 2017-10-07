@@ -50,6 +50,50 @@
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
     <script type="text/javascript">
+    
+    $(function() {
+	    $( "#P_S_date" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    $(function() {
+	    $( "#Project_end_date" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    $(function() {
+	    $( "#Hyper_care_date" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    $(function() {
+	    $( "#Exec_start_date" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    $(function() {
+	    $( "#Initiate_start_date" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    $(function() {
+	    $( "#Project_Start_Date" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    
         $(document).ready(function () {
             // Create jqxTree
             $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
@@ -113,6 +157,15 @@
   height: 100%;
   text-align:center;
 } 
+
+p.field-wrapper input {
+    float: right;
+}
+p.required-field::before { 
+    content: "*";
+    float: right;
+    color: red;
+}
 
 </style>
         
@@ -311,20 +364,143 @@ $(function() {
         var arcComment = document.getElementById("arcComment");
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
+    
+    
+    
+    
+    $(function() {
+        $( "#datepicker_1" ).datepicker();
+    });
 </script>
   
  
     
 </head>
 <body class='default'>
-    
-    <%@page language="java"%>
+
+
+
+
+
+ 
+
+
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
 
 
  
-<form class="form-signin" name="loginForm" method="post" action="Project">
+<form class="form-signin" name="loginForm" method="post" >
+
+<script>
+
+function valid1()
+{
+	
+	var project_name = document.getElementsByName("projectname")[0].value;
+	
+		var descr = document.getElementsByName("descr")[0].value;
+	var appno = document.getElementsByName("appno")[0].value;
+	var Startdate = document.getElementsByName("Startdate")[0].value;
+	var Intdate = document.getElementsByName("Intdate")[0].value;
+	var Plandate = document.getElementsByName("Plandate")[0].value;
+	var Execdate = document.getElementsByName("Execdate")[0].value;
+	var Hyperdate = document.getElementsByName("Hyperdate")[0].value;
+	var Enddate = document.getElementsByName("Enddate")[0].value;
+	var flag=0;
+	<%@ page import="java.sql.*"%>
+	<%@ page import="javax.sql.*"%>
+	<%@ page import="java.util.ArrayList" %>
+	<%
+	String[] values_name = new String[5];
+	ArrayList<String> zoom = new ArrayList<String>();
+	int i=0;
+	int count=0;
+    String project_name=request.getParameter("projectname"); 
+	
+Class.forName("com.mysql.jdbc.Driver"); 
+java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
+Statement st= con.createStatement(); 
+
+/*ResultSet rs1=st.executeQuery("select count(*) from projinfo ");
+while (rs1.next())
+{
+	count= Integer.parseInt(rs1.getString(1));
+}
+*/
+
+ResultSet rs=st.executeQuery("select projectname from projinfo ");
+while (rs.next())
+{
+
+	//values_name[i] = rs.getString(1);
+	zoom.add(rs.getString(1));
+    //System.out.println("Hello " + values_name[i]);
+    //i++;
+}   
+//System.out.println("Count : " +count);
+
+for (String z : zoom) {
+    //System.err.println("FDFD "+z);
+%>
+
+if (project_name == "<%= z %>" ) 
+		
+	{
+	flag=1;
+	
+	}
+
+<% } %> 
+
+ 
+
+	if (project_name == "" || descr == "" || Startdate == "" || Enddate == "" )
+		{
+		alert("Please fill the mandatory fields");
+		return false;
+		}
+	
+	else if (flag == 1)
+		{
+		alert("Project Already Exists");
+		return false;
+		}
+	else
+		{
+	var f=document.loginForm;
+    f.method="post";
+    f.action='Project';
+    f.submit();   
+		}
+}
+
+
+function validation(pro_name)
+{
+
+	if (project_name == Pro_name)
+		{
+		alert("Project Already Exists");
+		}
+	else
+		{
+		var f=document.loginForm;
+	    f.method="post";
+	    f.action='Project';
+	    f.submit(); 
+		}
+	
+	
+}
+</script>
+<style>
+ .required_fie:after
+  {
+   content:" *";
+    color: red; 
+   }
+</style>
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -422,6 +598,7 @@ $(function() {
                 </div>
               
    <script>
+   
   $(function () {
     // 6 create an instance when the DOM is ready
     $('#jstree').jstree();
@@ -493,28 +670,31 @@ $(function() {
                                         
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput198">
-                                               Project Name&nbsp;
+                                           <div class="required_fie">   Project Name&nbsp; </div> 
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="projectname" >
+               <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="projectname" required/>
+              
                                         </div>
-                                        
+                                        <%@ page import="java.sql.*"%>
+
                                 
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput229">Description
+                                            <label class="control-label" for="formInput229">
+                                            <div class="required_fie">Description&nbsp;</div>
 </label>
                                             <input type="text" class="form-control" id="formInput229" placeholder="Description" name="descr" >
                                         </div>
                                        <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">No of Applications</label>
+            <label >No of Applications</label>
             <input placeholder="No of Applications" id="date" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
                                          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Project Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label required "><div class="required_fie">Project Start Date&nbsp;</div></label>
+            <input placeholder="dd/mm/yyyy" id="Project_Start_Date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required/>
           </div>
           
         </div>  
@@ -522,7 +702,7 @@ $(function() {
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required"> Initiate Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="Initiate_start_date" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
@@ -530,7 +710,7 @@ $(function() {
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Plan Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="P_S_date" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>    
@@ -538,7 +718,7 @@ $(function() {
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Execution Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="Exec_start_date" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>            
@@ -546,14 +726,14 @@ $(function() {
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Hypercare Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="Hyper_care_date" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Project End Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label required"><div class="required_fie">Project End Date&nbsp;</div></label>
+            <input placeholder="dd/mm/yyyy" id="Project_end_date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>                 
@@ -562,7 +742,7 @@ $(function() {
                             </div>                             
                         </div>         
                         <br/>                
-                       <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
+                       <button type="button" class="btn btn-primary btn pull-left" onclick="valid1()">Save</button>&nbsp;
                     <button type="button" class="btn btn-default" onclick="location.href='appemp.jsp';">Back</button>
                                         
                                                                            </form>                               

@@ -3,7 +3,9 @@
 <!DOCTYPE html>  
 <html>  
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+
+  
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
 
@@ -18,27 +20,14 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- <script src="js/jstree.min.js"></script>
-   <script src="http://code.jquery.com/jquery-2.0.3.js"></script>
 
-    <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
+  <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
-        can populate it from 'UL' or by using its 'source' property." />
-
-    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="scripts/demos.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
-    
+        can populate it from 'UL' or by using its 'source' property." />   
  
-
+ 
 		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+		<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
 		<script type="text/javascript" src="js/jqueryprogressbar.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
          <script src="https://docraptor.com/docraptor-1.0.0.js"></script>
@@ -46,41 +35,58 @@
 		<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
 		<script src="js/treeTable.js"></script>
 		<link type="text/css" rel="stylesheet" href="css/main.css" />
-		 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+		 <script src="js/jstree.min.js"></script>
+  
 
+   
+       
+
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+     <script type="text/javascript" src="scripts/demos.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+      	
+	
+     
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+ 
 <script>
 
-	 $(function() {
-		 for(var i=0;i<200;i++)
-			{
-		    $( "#pln_srt_date"+i ).datepicker({
-		        format: "mm/dd/yyyy",
-		        autoclose: true
-		    });
-		    $( "#pln_end_date"+i ).datepicker({
-		        format: "mm/dd/yyyy",
-		        autoclose: true
-		    });
-		    $( "#act_srt_date"+i ).datepicker({
-		        format: "mm/dd/yyyy",
-		        autoclose: true
-		    });
-		    $( "#act_end_date"+i ).datepicker({
-		        format: "mm/dd/yyyy",
-		        autoclose: true
-		    });
-			}
-		});
+$(function() {
+	 for(var i=0;i<200;i++)
+		{
+	    $( "#pln_srt_date"+i ).datepicker({
+	        format: "mm/dd/yyyy",
+	        autoclose: true
+	    });
+	    $( "#pln_end_date"+i ).datepicker({
+	        format: "mm/dd/yyyy",
+	        autoclose: true
+	    });
+	    $( "#act_srt_date"+i ).datepicker({
+	        format: "mm/dd/yyyy",
+	        autoclose: true
+	    });
+	    $( "#act_end_date"+i ).datepicker({
+	        format: "mm/dd/yyyy",
+	        autoclose: true
+	    });
+		}
+	});
 
 
-</script>
-  
+</script>		  
  
     <script>
 	  function getID(pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
 	  {
-		  window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
+		 // window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
 		  var startDate =pln_srt;
 		  var endDate =pln_end;
 		  var actual_startdate =act_srt;
@@ -101,8 +107,8 @@
 
 		  var percent = (actual_Hours/total_hours) * 100;
 
-		  alert("minDate "+minDate);
-		  alert("maxDate "+maxDate);
+		  //alert("minDate "+minDate);
+		  //alert("maxDate "+maxDate);
 		  percentage=100;
 		  console.log("actual_Hours : "+actual_Hours);
 		  console.log("total_hours : "+total_hours);
@@ -478,14 +484,25 @@ function remove(x)
     f.submit();
 }
 </script>
-<body>  
+<body class='default'>
 <%@ page import="java.sql.*"%>
-	<%@ page import="javax.sql.*"%>
+		<%@ page import="javax.sql.*"%>
+<form class="form-signin" name="loginForm" method="post" action="archive_exec">
+	<script>
+	var sequence_number=[];
+	var level_number=[];
+	var task_name=[];
+	var member_ass=[];
+	var actual_start=[];
+	var actual_end=[];
+	var plan_start=[];
+	var plan_end=[];
+		function pass(current_sequence,current_level,current_id){
 <%
 
 	String det=(String)session.getAttribute("theName");
-Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
+Class.forName("com.mysql.jdbc.Driver"); 
+java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 String query3 = "select * from archive_exec order by seq_num";
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
@@ -494,10 +511,30 @@ Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
 String query4 = "select * from dummy";
 Statement st4 = conn.createStatement();
-ResultSet rs4 = st4.executeQuery(query4); 
+ResultSet rs4 = st4.executeQuery(query4);
+String query5 = "select * from archive_exec order by seq_num";
+Statement st5 = conn.createStatement();
+ResultSet rs5 = st5.executeQuery(query5);
+while(rs5.next()){
+%>
+sequence_number.push('<%=rs5.getString(1)%>');
+level_number.push('<%=rs5.getString(2)%>');
+task_name.push('<%=rs5.getString(3)%>');
+member_ass.push('<%=rs5.getString(4)%>');
+actual_start.push('<%=rs5.getString(5)%>');
+actual_end.push('<%=rs5.getString(6)%>');
+plan_start.push('<%=rs5.getString(7)%>');
+plan_end.push('<%=rs5.getString(8)%>');
+
+<%
+break;
+}%>
+window.alert(current_sequence+" "+current_level+" "+current_id);
+}
+</script>
+<%
 if(rs4.next()){
 	%>
-<form class="form-signin" name="loginForm" method="post" action="archive_exec">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -740,7 +777,7 @@ while(rs3.next()){
 <td><input  type="text" class="in" placeholder="enter" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID(document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
 	<td ><input type="text" style="background-color:transparent;width:20%;"; id="status<%=i %>"  /></td>
-<td></td>
+<td onclick="pass('<%=rs3.getString(1)%>','<%=rs3.getString(2)%>','<%=i %>')"></td>
 <td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
 
 </tr>
