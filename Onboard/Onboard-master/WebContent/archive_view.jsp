@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>  
 <html>  
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
@@ -34,7 +33,7 @@
 		<link type="text/css" href="css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />	
 		<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
 		<script src="js/treeTable.js"></script>
-
+		<link type="text/css" rel="stylesheet" href="css/main.css" />
 		 <script src="js/jstree.min.js"></script>
   
 
@@ -81,12 +80,18 @@ $(function() {
 	});
 
 
-</script>		  
+</script>
+<script>
+function qx(a,b,c,d)
+{
+	window.alert("function "+a+" "+b+" "+c+" "+d.id);
+	}
+</script>
  
     <script>
-	  function getID(lev,pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
+	  function getID(pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
 	  {
-		 // window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
+		
 		  var startDate =pln_srt;
 		  var endDate =pln_end;
 		  var actual_startdate =act_srt;
@@ -112,10 +117,10 @@ $(function() {
 		  percentage=100;
 		  console.log("actual_Hours : "+actual_Hours);
 		  console.log("total_hours : "+total_hours);
-		  if(lev!=1){
+
 		  document.getElementById(pln_hrs.id).value=total_hours;
 		  document.getElementById(act_hrs.id).value=actual_Hours;
-		  }
+
 		  if (percent < 0 ) {
 		  percent=0;
 		  $('#'+progressbar.id).reportprogress(percent);
@@ -151,7 +156,7 @@ $(function() {
 		  }
 		  else
 			  {
-		
+			
 			  }
 		  }
 	  </script>
@@ -396,7 +401,7 @@ $(function() {
 
 
 </script>
- <style>
+ <!-- <style>
  
 .progressTSK {
   overflow: hidden;
@@ -451,8 +456,8 @@ $(function() {
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
  
-  </style>
- 
+  
+  </style>-->
   <script>
   function sub(x,y,z,w)
   {
@@ -481,6 +486,8 @@ $(function() {
   <script>
   function call_fun(name,a,b,c,d,e,g)
   {
+	  window.alert(g);
+	  
 	 var f=document.loginForm;
 	    f.method="post";
 	    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e;
@@ -507,30 +514,18 @@ function remove(x)
 	String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
-
+String query3 = "select * from archive_exec order by seq_num";
+Statement st3 = conn.createStatement();
+ResultSet rs3 = st3.executeQuery(query3);
 String query = "select * from projinfo where id = "+det;
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
-String query9 = "select * from projinfo where id = "+det;
-Statement st9 = conn.createStatement();
-ResultSet rs9 = st9.executeQuery(query9);
 String query4 = "select * from dummy";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
-if(rs9.next()){
-}
-String query3 = "select * from archive_exec where projects='"+rs9.getString("projectname")+"' order by seq_num";
-Statement st3 = conn.createStatement();
-ResultSet rs3 = st3.executeQuery(query3);
-System.out.println(rs9.getString("projectname"));
-String query5 = "select * from archive_exec where projects='"+rs9.getString("projectname")+"' order by seq_num";
+String query5 = "select * from archive_exec order by seq_num";
 Statement st5 = conn.createStatement();
 ResultSet rs5 = st5.executeQuery(query5);
-
-String query7 = "select * from projinfo where id = "+det;
-Statement st7 = conn.createStatement();
-ResultSet rs7 = st7.executeQuery(query7);
-
 if(rs4.next()){
 	%>
 <div class="container">
@@ -766,21 +761,21 @@ while(rs3.next()){
 <tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>">
 <td style="width:200px;"><b>
 <span style="color:#3071a9;font-size:150%;"><input  type="text"   placeholder="enter" id="task" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly /></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></b></td>
-<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
-<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onChange="pass('<%=rs3.getString(3)%>',this.value,'<%=i %>')"  readonly/></td>
-<td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>" /></td>
-<td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>" /></td>
-<td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
-<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)" /></td>
-<td><input  type="text" class="in"  id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
+<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" readonly /></td>
+<td><input  type="text" class="in" id="pln_srt_date<%=i %>"   name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onChange="pass('<%=rs3.getString(3)%>',this.value,'<%=i %>')"  readonly/></td>
+<td><input  type="text" class="in" id="pln_end_date<%=i %>"  name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>" readonly/></td>
+<td><input type="text" class="in" id="act_srt_date<%=i %>"  name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>" readonly/></td>
+<td><input  type="text" class="in" id="act_end_date<%=i %>"   name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>" readonly /></td>
+<td><input  type="text" class="in"  id="phours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(13) %>" readonly/></td>
+<td><input  type="text" class="in"  id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>"  readonly/></td>
+
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
 	<td ><input type="text" style="background-color:transparent;width:20%;"; id="status<%=i %>"  /></td>
 <td></td>
 <td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
-<script>
-getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
-</script>
-
+<script type="text/javascript">
+getID(document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
+  </script>
 </tr>
 <%}
 	else
@@ -789,18 +784,17 @@ getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value
 		<tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>" data-tt-parent-id="<%=rs3.getString(11) %>">
 		&nbsp;&nbsp;<td style="width:200px;">
 		<span style="color:#00BFFF;font-size:100%;"><input  type="text"   placeholder="enter" id="name<%=i %>" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly/></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></td>
-		<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
-<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>"  /></td>
-<td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>"  /></td>
-<td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
-<td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
-<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);""/></td>
-<td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);" /></td>
-<td ><div class="progressbar" id="progressbar<%=i%>" style="display:none;"></div></td>
+		<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" readonly/></td>
+<td><input  type="text" class="in"  name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" readonly /></td>
+<td><input  type="text" class="in"  name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>" readonly  /></td>
+<td><input type="text" class="in"  name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  readonly/></td>
+<td><input  type="text" class="in"  name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>" readonly /></td>
+<td><input  type="text" class="in"  id="phours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(13)%>" readonly/></td>
+<td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" readonly onclick="getID(document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);" /></td>
+<td ><div id="progressbar<%=i%>" style="display:none;"></div></td>
 	<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
 <td></td>
 <td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
-
 </tr>
 <%
 	}
@@ -821,11 +815,9 @@ i++;
 		treeTable($('#table'))
 	</script>       
 <div>
-<%if(rs7.next()){ %>
-    <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs7.getString("projectname") %>" >
-<%} %>
-<input type="button" name="addbtn" class="btn btn-primary" onclick="sub(<%=i+1%>,1,'<%=rs4.getString(1) %>','<%=rs4.getString(1) %>');" value="Add" >
-<input type="button" name="subbtn" class="btn btn-primary" value="Submit" onclick="update()" >
+
+
+<button type="button" class="btn btn-primary" onclick="window.location.href='archive_exec_samp.jsp'">Edit</button>
 </div>
 </div>
 
